@@ -12,6 +12,6 @@ class HINH_THUC_THANH_TOAN extends Model
     
     public function DON_DAT_HANG()
     {
-        return $this->hasMany('App\THUOC','ID_HT','ID_HT')
+        return $this->hasMany('App\DON_DAT_HANG','ID_HT','ID_HT')
     }
 }
