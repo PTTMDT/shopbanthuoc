@@ -11,10 +11,10 @@ class CHI_TIET_LO extends Model
     
     public function LO ()
     {
-        return $this->belongsTo('App\LO','ID_LO','ID_LO')
+        return $this->belongsTo('App\LO','ID_LO','ID_LO');
     }
     public function THUOC()
     {
-        return $this->belongsTo('App\THUOC','ID_THUOC','ID_THUOC')
+        return $this->belongsTo('App\THUOC','ID_THUOC','ID_THUOC');
     }
 }
