@@ -128,16 +128,16 @@ class ProductController extends Controller
     }
     //End Admin Page
     public function details_product($product_slug){
-        $cate_product = DB::table('tbl_category_product')->where('category_status','0')->orderby('category_id','desc')->get(); 
-        $brand_product = DB::table('tbl_brand')->where('brand_status','0')->orderby('brand_id','desc')->get(); 
+        $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get(); 
+        $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
 
-        $details_product = DB::table('tbl_product')
-        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->where('tbl_product.product_slug',$product_slug)->get();
+        $details_product = DB::table('thuoc')
+        ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
+        ->join('nha_cung_cap','nha_cung_cap.ID_NCC','=','thuoc.ID_NCC')
+        ->where('thuoc.product_slug',$product_slug)->get();
 
         foreach($details_product as $key => $value){
-            $category_id = $value->category_id;
+            $ID_GOC = $value->ID_GOC;
         }
        
 
