@@ -62,6 +62,7 @@
 
 							    <p><b>Giá khuyến mãi:</b> {{$value->DON_GIA_KM}}</p>
 								<p><b>Danh mục:</b> {{$value->GOC_THUOC}}</p>
+								<p><b>Hoạt chất chính:</b> {{$value->HOAT_CHAT_CHINH}}</p>
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
@@ -70,9 +71,15 @@
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#details" data-toggle="tab">Mô tả</a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Chi tiết sản phẩm</a></li>
-							
+								<!-- <li class="active"><a href="#details" data-toggle="tab">Hoạt chất chính</a></li> -->
+								<!-- <li><a href="#companyprofile" data-toggle="tab">Hàm lượng</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Quy cách đóng gói</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Tác dụng</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Cách dùng</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Lưu ý</a></li>
+								 -->
+								 <li><a href="#companyprofile" data-toggle="tab">Thông tin</a></li>
+								
 								<li ><a href="#reviews" data-toggle="tab">Đánh giá</a></li>
 							</ul>
 						</div>
@@ -83,11 +90,39 @@
 							</div>
 							
 							<div class="tab-pane fade" id="companyprofile" >
-								<p>{!!$value->TAC_DUNG!!}</p>
-								
+								<!-- <p>Hàm lượng: {!!$value->HOAT_CHAT_CHINH!!}</p> -->
+								<p>Hàm lượng: {!!$value->HAM_LUONG!!}</p>
+								<p>Quy cách đóng gói: {!!$value->QUY_CACH_DONG_GOI!!}</p>
+								<p>Tác dụng: {!!$value->TAC_DUNG!!}</p>
+								<p>Cách dùng: {!!$value->CACH_DUNG!!}</p>
+								<p>Lưu ý: {!!$value->CACH_DUNG!!}</p>
+							</div>
+
+							
+							<!-- <div class="tab-pane fade" id="companyprofile" >
+								<p>{!!$value->HAM_LUONG!!}</p>
 						
 							</div>
+
+							<div class="tab-pane fade" id="companyprofile" >
+								<p>{!!$value->QUY_CACH_DONG_GOI!!}</p>
+						
+							</div>
+
+							<div class="tab-pane fade" id="companyprofile" >
+								<p>{!!$value->TAC_DUNG!!}</p>
+						
+							</div>
+							<div class="tab-pane fade" id="companyprofile" >
+								<p>{!!$value->CACH_DUNG!!}</p>
+						
+							</div>
+							<div class="tab-pane fade" id="companyprofile" >
+								<p>{!!$value->LUU_Y!!}</p>
+						
+							</div> -->
 							
+
 							<div class="tab-pane fade" id="reviews" >
 								<div class="col-sm-12">
 									<ul>
