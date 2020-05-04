@@ -4,7 +4,9 @@
 <div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="{{URL::to('/public/uploads/product/'.$value->product_image)}}" alt="" />
+							<img src="{{URL::to('public/uploads/product/'.$value->HINH_ANH)}}"/>
+						
+								
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -35,18 +37,18 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>{{$value->product_name}}</h2>
-								<p>Mã ID: {{$value->product_id}}</p>
+								<h2>{{$value->TEN_THUOC}}</h2>
+								<!-- <p>Mã ID: {{$value->ID_THUOC}}</p> -->
 								<img src="images/product-details/rating.png" alt="" />
 								
 								<form action="{{URL::to('/save-cart')}}" method="POST">
 									{{ csrf_field() }}
 								<span>
-									<span>{{number_format($value->product_price).'VNĐ'}}</span>
+									<span>{{number_format($value->DON_GIA).'VNĐ'}}</span>
 								
 									<label>Số lượng:</label>
 									<input name="qty" type="number" min="1"  value="1" />
-									<input name="productid_hidden" type="hidden"  value="{{$value->product_id}}" />
+									<input name="productid_hidden" type="hidden"  value="{{$value->ID_THUOC}}" />
 									<button type="submit" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Thêm giỏ hàng
@@ -57,8 +59,9 @@
 
 								<p><b>Tình trạng:</b> Còn hàng</p>
 								<p><b>Điều kiện:</b> Mơi 100%</p>
-								<p><b>Thương hiệu:</b> {{$value->brand_name}}</p>
-								<p><b>Danh mục:</b> {{$value->category_name}}</p>
+
+							    <p><b>Giá khuyến mãi:</b> {{$value->DON_GIA_KM}}</p>
+								<p><b>Danh mục:</b> {{$value->GOC_THUOC}}</p>
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
@@ -80,7 +83,7 @@
 							</div>
 							
 							<div class="tab-pane fade" id="companyprofile" >
-								<p>{!!$value->product_content!!}</p>
+								<p>{!!$value->TAC_DUNG!!}</p>
 								
 						
 							</div>
@@ -123,8 +126,9 @@
 										<div class="product-image-wrapper">
 											 <div class="single-products">
 		                                        <div class="productinfo text-center">
-		                                            <img src="{{URL::to('public/uploads/product/'.$lienquan->product_image)}}" alt="" />
-		                                            <h2>{{number_format($lienquan->product_price).' '.'VNĐ'}}</h2>
+		                                            <!-- <img src="{{URL::to('public/uploads/product/'.$lienquan->HINH_ANH)}}" alt="" /> -->
+													
+												    <h2>{{number_format($lienquan->product_price).' '.'VNĐ'}}</h2>
 		                                            <p>{{$lienquan->product_name}}</p>
 		                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
 		                                        </div>

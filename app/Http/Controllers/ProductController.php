@@ -11,7 +11,7 @@ session_start();
 class ProductController extends Controller
 {
     public function AuthLogin(){
-        $admin_id = Session::get('admin_id');
+        $admin_id = Session::get('ID_NV');
         if($admin_id){
             return Redirect::to('dashboard');
         }else{
@@ -130,24 +130,39 @@ class ProductController extends Controller
     public function details_product($product_slug){
         $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get(); 
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
-
-        $details_product = DB::table('thuoc')
+        // $offer_product = DB::table('khuyen_mai')->orderby('ID_KM','desc')->get(); 
+        $offer_details_product = DB::table('thuoc')   // ID_KM khác NULL trong bảng thuoc
         ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
-        ->join('nha_cung_cap','nha_cung_cap.ID_NCC','=','thuoc.ID_NCC')
+        ->join('khuyen_mai','khuyen_mai.ID_KM','=','thuoc.ID_KM')
         ->where('thuoc.product_slug',$product_slug)->get();
+        $normal_details_product = DB::table('thuoc')         // ID_KM = NULL trong bảng thuoc
+        ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
+        ->where('thuoc.product_slug',$product_slug)->get();
+ 
+        if(empty($offer_details_product)==NULL){            
+        
+            $details_product=$normal_details_product;
 
-        foreach($details_product as $key => $value){
-            $ID_GOC = $value->ID_GOC;
         }
-       
-
-        $related_product = DB::table('tbl_product')
-        ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
-        ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->where('tbl_category_product.category_id',$category_id)->whereNotIn('tbl_product.product_slug',[$product_slug])->get();
+        else {
+            $details_product=$offer_details_product;
+        }
+        foreach($details_product as $key => $value){
+            $category_name = $value->GOC_THUOC;
+           }
+        $offer_price = DB::table('thuoc')->select('DON_GIA_KM')->where('thuoc.product_slug',$product_slug)->get();  // lấy giá khuyến mãi trong bảng thuoc
+        // if($offer==NULL) {
+        //     $offer
+        // }
+        $related_product = DB::table('thuoc')      // các thuốc liên quan
+        ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
+        // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        ->where('thuoc.ID_GOC',$category_name)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
 
 
         return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product);
 
     }
+   
+   
 }
