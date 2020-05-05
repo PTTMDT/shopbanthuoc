@@ -58,28 +58,28 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{('public/frontend/images/home/logo.png')}}" alt="" /></a>
+                            <a href="index.html"><img src="{{('public/frontend/images/y.png')}}" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    USA
+                                <button type="button" class="btn btn-default dropdown-toggle usa"data-toggle="dropdown">
+                                    Vietnamese
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
+                                    <li><a href="#">Vietnamese</a></li>
+                                    <li><a href="#">English</a></li>
                                 </ul>
                             </div>
                             
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    DOLLAR
+                                    VNĐ
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
+                                    <li><a href="#">VNĐ</a></li>
+                                    <li><a href="#">Dollar</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                
-                                <li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
+                                
                                 <?php
                                    $customer_id = Session::get('customer_id');
                                    $shipping_id = Session::get('shipping_id');
@@ -148,11 +148,15 @@
                                 <li><a href="{{URL::to('/trang-chu')}}" class="active">Trang chủ</a></li>
                                 <li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="shop.html">THUỐC XƯƠNG KHỚP</a></li>
+                                        <li><a href="shop.html">THUỐC DA LIỄU</a></li>
+                                        <li><a href="shop.html">THUỐC HỖ TRỢ TRÍ NHỚ</a></li>
+                                        <li><a href="shop.html">THUỐC CẢM CÚM</a></li>
+                                        <li><a href="shop.html">THUỐC HẠ SỐT, GIẢM ĐAU</a></li>
+                                        <li><a href="shop.html">THUỐC DỊ ỨNG</a></li>
                                        
                                     </ul>
                                 </li> 
-                                <li class="dropdown"><a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
                                
                                 </li> 
                                 <li><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
@@ -188,39 +192,39 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free E-Commerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                    <h1><span>LYNTT</span>-Health</h1>
+                                    <h2>Nhà Thuốc Trực Tuyến Thân Thiện Cho Mọi Gia Đình</h2>
+                                    <p>Tự tạo đơn thuốc, Free ship cho hóa đơn từ 100.000đ trở lên</p>
+                                    <button type="button" class="btn btn-default get">ĐẶT THUỐC NGAY</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="{{('public/frontend/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{('public/frontend/images/pricing.png')}}"  class="pricing" alt="" />
+                                    <img src="{{('public/frontend/images/c.jpg')}}" class="girl img-responsive" alt="" />
+                                    <!-- <img src="{{('public/frontend/images/pricing.png')}}"  class="pricing" alt="" /> -->
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>100% Responsive Design</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                    <h1><span>LYNTT</span>-Health</h1>
+                                    <h2>Mở Rộng Phạm Vi Giao Hàng</h2>
+                                    <p>Những Sản Phẩm Cần Thiết Trong MÙa Dịch Covid-19 Đáp Ứng Nhu Cầu Khắp Mọi Nơi </p>
+                                    <button type="button" class="btn btn-default get">ĐẶT THUỐC NGAY</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="{{('public/frontend/images/girl2.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{('public/frontend/images/pricing.png')}}"  class="pricing" alt="" />
+                                    <img src="{{('public/frontend/images/d.jpg')}}" class="girl img-responsive" alt="" />
+                                    <!-- <img src="{{('public/frontend/images/pricing.ipg')}}"  class="pricing" alt="" /> -->
                                 </div>
                             </div>
                             
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free Ecommerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                    <h1><span>LYNTT</span>-Health</h1>
+                                    <h2>Nhanh & Tiện Lợi</h2>
+                                    <p>Tiết Kiệm Ngay 10% Trên Tổng Giá Trị Đơn Hàng </p>
+                                    <button type="button" class="btn btn-default get">ĐẶT THUỐC NGAY</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="{{('public/frontend/images/girl3.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{('public/frontend/images/pricing.png')}}" class="pricing" alt="" />
+                                    <img src="{{('public/frontend/images/E.jpg')}}" class="girl img-responsive" alt="" />
+                                    <!-- <img src="{{('public/frontend/images/pricing.png')}}" class="pricing" alt="" /> -->
                                 </div>
                             </div>
                             
@@ -287,8 +291,8 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+                            <h2><span>LYNTT</span>-Health</h2>
+                            <p style ="color: #000000">Cùng Khám Phá Trải NGhiệm - Nhà Thuốc Trực Tuyến</p>
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -296,14 +300,14 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{('public/frontend/images/iframe1.png')}}" alt="" />
+                                        <img src="{{('public/frontend/images/h.jpg')}}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
                                     </div>
                                 </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
+                                <p>Allerfar</p>
+                                <h2>Hộp 10 vỉ x 20 viên</h2>
                             </div>
                         </div>
                         
@@ -311,14 +315,14 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                         <img src="{{('public/frontend/images/iframe2.png')}}" alt="" />
+                                         <img src="{{('public/frontend/images/u.jpg')}}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
                                     </div>
                                 </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
+                                <p>Bromhexin</p>
+                                <h2>Hộp 10 vỉ x 20 viên</h2>
                             </div>
                         </div>
                         
@@ -326,14 +330,14 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                         <img src="{{('public/frontend/images/iframe3.png')}}" alt="" />
+                                         <img src="{{('public/frontend/images/n.jpg')}}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
                                     </div>
                                 </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
+                                <p>Stadleucin</p>
+                                <h2>Hộp 10 vỉ x 10 viên</h2>
                             </div>
                         </div>
                         
@@ -341,14 +345,14 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                         <img src="{{('public/frontend/images/iframe4.png')}}" alt="" />
+                                         <img src="{{('public/frontend/images/m.jpg')}}" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
                                     </div>
                                 </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
+                                <p>Eumovate cream</p>
+                                <h2>Hộp 1 tuýt</h2>
                             </div>
                         </div>
                     </div>
@@ -367,59 +371,51 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>Service</h2>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Online Help</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Order Status</a></li>
-                                <li><a href="#">Change Location</a></li>
-                                <li><a href="#">FAQ’s</a></li>
+                            <h2 style ="color: #000000">Liên Hệ Với Chúng Tôi</h2>
+                            <ul class="nav nav-pills nav-stacked" >
+                                <li><a href="#">Điện Thoại: 0782925679</a></li>
+                                <li><a href="#">Hotline: 1900737891</a></li>
+                                <li><a href="#">Hỗ Trợ: lyntthealth@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>Quock Shop</h2>
+                            <h2 style ="color: #000000">Dịch Vụ</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">T-Shirt</a></li>
-                                <li><a href="#">Mens</a></li>
-                                <li><a href="#">Womens</a></li>
-                                <li><a href="#">Gift Cards</a></li>
-                                <li><a href="#">Shoes</a></li>
+                                <li><a href="#">Trò Chuyện Với Bác Sĩ</a></li>
+                                <li><a href="#">Nhà Thuốc LYNTT-Health</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>Policies</h2>
+                            <h2 style ="color: #000000">Tìm Hiểu Thêm</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Privecy Policy</a></li>
-                                <li><a href="#">Refund Policy</a></li>
-                                <li><a href="#">Billing System</a></li>
-                                <li><a href="#">Ticket System</a></li>
+                                <li><a href="#">Dịch Vụ Thăm Khám</a></li>
+                                <li><a href="#">Dịch Vụ Kê Đơn Theo Toa</a></li>
+                                <li><a href="#">Dịch Vụ Khách Hàng</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>About Shopper</h2>
+                            <h2 style ="color: #000000">Hỗ Trợ Khách Hàng</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Company Information</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Store Location</a></li>
-                                <li><a href="#">Affillate Program</a></li>
-                                <li><a href="#">Copyright</a></li>
+                                <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                                <li><a href="#">Chính Sách Bảo Mật</a></li>
+                                <li><a href="#">Điều Khoản</a></li>
+                                <li><a href="#">Liên Hệ</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-3 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2>About Shopper</h2>
+                            <h2 style ="color: #FF8C00">LYNTT-Health</h2>
                             <form action="#" class="searchform">
                                 <input type="text" placeholder="Your email address" />
                                 <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                                <p>Địa Chỉ: 17/140b Nguyễn Văn CỪ Ninh Kiều Cần Thơ <br />Hân Hạnh Được Phục Vụ Quý Khách Hàng</p>
                             </form>
                         </div>
                     </div>
@@ -431,7 +427,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+                    <p class="pull-left">Copyright © 2013 LYNTT-Health Inc. All rights reserved.</p>
                     <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
                 </div>
             </div>
