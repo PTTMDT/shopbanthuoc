@@ -53,26 +53,26 @@
           @foreach($all_brand_product as $key => $brand_pro)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{ $brand_pro->brand_name }}</td>
+            <td>{{ $brand_pro->TEN_NCC }}</td>
             <td>{{ $brand_pro->brand_slug }}</td>
             <td><span class="text-ellipsis">
               <?php
                if($brand_pro->brand_status==0){
                 ?>
-                <a href="{{URL::to('/unactive-brand-product/'.$brand_pro->brand_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                <a href="{{URL::to('/unactive-brand-product/'.$brand_pro->ID_NCC)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                 <?php
                  }else{
                 ?>  
-                 <a href="{{URL::to('/active-brand-product/'.$brand_pro->brand_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                 <a href="{{URL::to('/active-brand-product/'.$brand_pro->ID_NCC)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
                 <?php
                }
               ?>
             </span></td>
            
             <td>
-              <a href="{{URL::to('/edit-brand-product/'.$brand_pro->brand_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/edit-brand-product/'.$brand_pro->ID_NCC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/delete-brand-product/'.$brand_pro->brand_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/delete-brand-product/'.$brand_pro->ID_NCC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>

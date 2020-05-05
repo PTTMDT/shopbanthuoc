@@ -54,14 +54,14 @@
           @foreach($all_order as $key => $order)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{ $order->customer_name }}</td>
-            <td>{{ $order->order_total }}</td>
-            <td>{{ $order->order_status }}</td>
+            <td>{{ $order->TEN_KH}}</td>
+            <td>{{ $order->TONG_DDH}}</td>
+            
            
             <td>
-              <a href="{{URL::to('/view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('/view-order/'.$order->ID_DDH)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa đơn hàng không?')" href="{{URL::to('/delete-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa đơn hàng không?')" href="{{URL::to('/delete-order/'.$order->ID_DDH)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>

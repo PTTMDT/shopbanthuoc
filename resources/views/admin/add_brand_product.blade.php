@@ -20,7 +20,7 @@
                                     {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên thương hiệu</label>
-                                    <input type="text" name="brand_product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
+                                    <input type="text" name="TEN_NCC" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Slug</label>

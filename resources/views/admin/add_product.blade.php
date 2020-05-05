@@ -20,7 +20,7 @@
                                     {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                    <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
+                                    <input type="text" name="TEN_THUOC" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Slug</label>
@@ -28,11 +28,11 @@
                                 </div>
                                      <div class="form-group">
                                     <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                    <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
+                                    <input type="text" name="DON_GIA" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
                                 </div>
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                                    <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                                    <input type="file" name="HINH_ANH" class="form-control" id="exampleInputEmail1">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả sản phẩm</label>
@@ -40,26 +40,18 @@
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                                    <textarea style="resize: none" rows="8" class="form-control" name="product_content" id="exampleInputPassword1" placeholder="Nội dung sản phẩm"></textarea>
+                                    <textarea style="resize: none" rows="8" class="form-control" name="HOA_CHAT_CHINH" id="exampleInputPassword1" placeholder="Nội dung sản phẩm"></textarea>
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputPassword1">Danh mục sản phẩm</label>
                                       <select name="product_cate" class="form-control input-sm m-bot15">
                                         @foreach($cate_product as $key => $cate)
-                                            <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                                            <option value="{{$cate->ID_GOC}}">{{$cate->GOC_THUOC}}</option>
                                         @endforeach
                                             
                                     </select>
                                 </div>
-                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Thương hiệu</label>
-                                      <select name="product_brand" class="form-control input-sm m-bot15">
-                                        @foreach($brand_product as $key => $brand)
-                                            <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
-                                        @endforeach
-                                            
-                                    </select>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                       <select name="product_status" class="form-control input-sm m-bot15">
