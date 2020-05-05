@@ -38,14 +38,18 @@ class CheckoutController extends Controller
     	$cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get();
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
 
-    	return view('pages.checkout.login_checkout')->with('category',$cate_product)->with('brand',$brand_product);
+        return view('pages.checkout.login_checkout')->with('category',$cate_product)->with('brand',$brand_product);
     }
     public function add_customer(Request $request){
 
     	$data = array();
     	$data['TEN_KH'] = $request->customer_name;
     	$data['SDT'] = $request->customer_phone;
+<<<<<<< HEAD
     	$data['customer_email'] = $request->customer_email;
+=======
+    	$data['EMAIL_KH'] = $request->customer_email;
+>>>>>>> eed2d4c9b963a9e3cf40f02b8713c10ee2594719
     	$data['PASSWORD'] = md5($request->customer_password);
 
     	$customer_id = DB::table('khach_hang')->insertGetId($data);
@@ -60,16 +64,24 @@ class CheckoutController extends Controller
     	$cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get();
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
 
-    	return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product);
+        return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product);
     }
     public function save_checkout_customer(Request $request){
     	$data = array();
+<<<<<<< HEAD
         $data['TEN_VC'] = $request->shipping_name;
         $data['GIA_VC'] = $request->shipping_price;
     	//$data['shipping_phone'] = $request->shipping_phone;
     	//$data['shipping_email'] = $request->shipping_email;
     	//$data['shipping_notes'] = $request->shipping_notes;
     	//$data['shipping_address'] = $request->shipping_address;
+=======
+    	$data['shipping_name'] = $request->TEN_VC;
+    	// $data['shipping_phone'] = $request->shipping_phone;
+    	// $data['shipping_email'] = $request->shipping_email;
+    	// $data['shipping_notes'] = $request->shipping_notes;
+    	// $data['shipping_address'] = $request->shipping_address;
+>>>>>>> eed2d4c9b963a9e3cf40f02b8713c10ee2594719
 
     	$shipping_id = DB::table('hinh_thuc_van_chuyen')->insertGetId($data);
 
@@ -81,13 +93,18 @@ class CheckoutController extends Controller
 
         $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get();
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
+<<<<<<< HEAD
         return view('pages.checkout.payment')->with('category',$cate_product)->with('brand',$brand_product);
+=======
+        return view('pages.checkout.payment')->with('category',$cate_product) ->with('brand',$brand_product);
+>>>>>>> eed2d4c9b963a9e3cf40f02b8713c10ee2594719
 
     }
     public function order_place(Request $request){
         //insert payment_method
      
         $data = array();
+<<<<<<< HEAD
         $data['TEN_HT'] = $request->payment_option;
        // $data['payment_status'] = 'Đang chờ xử lý';
         $payment_id = DB::table('hinh_thuc_thanh_toan')->insertGetId($data);
@@ -100,6 +117,25 @@ class CheckoutController extends Controller
         $order_data['TONG_DDH'] = Cart::total();
         //$order_data['order_status'] = 'Đang chờ xử lý';
         $order_id = DB::table('don_dat_hang')->insertGetId($order_data);
+=======
+        $data['payment_method'] = $request->TEN_HT;
+        // $data['payment_status'] = 'Đang chờ xử lý';
+        $payment_id = DB::table('hinh_thuc_thanh_toan')->insertGetId($data);
+        //insert payment_status
+     
+        $data = array();
+        $data['payment_status'] = $request->TEN_TT;
+        // $data['payment_status'] = 'Đang chờ xử lý';
+        $payment_id = DB::table('trang_thai')->insertGetId($data);
+        //insert order
+        $order_data = array();
+        $order_data['customer_id'] = Session::get('ID_KH');
+        $order_data['shipping_id'] = Session::get('ID_VC');
+        $order_data['payment_id'] = $payment_id;
+        $order_data['order_total'] = Cart::total();
+        $order_data['order_status'] = 'Đang chờ xử lý';
+        $order_id = DB::table('DON_DAT_HANG')->insertGetId($order_data);
+>>>>>>> eed2d4c9b963a9e3cf40f02b8713c10ee2594719
 
         //insert order_details
         $content = Cart::content();
@@ -136,6 +172,7 @@ class CheckoutController extends Controller
     	return Redirect::to('/login-checkout');
     }
     public function login_customer(Request $request){
+<<<<<<< HEAD
     	$email = $request->email_account;
     	$password = md5($request->password_account);
     	$result = DB::table('khach_hang')->where('customer_email',$email)->where('PASSWORD',$password)->first();
@@ -143,6 +180,14 @@ class CheckoutController extends Controller
     	
     	if($result){
     		Session::put('ID_KH',$result->customer_id);
+=======
+    	$email = $request->EMAIL_KH;
+    	$password = md5($request->PASSWORD);
+    	$result = DB::table('khach_hang')->where('EMAIL_KH',$email)->where('PASSWORD',$password)->first();
+    	
+    	if($result){
+    		Session::put('ID_KH',$result->ID_KH);
+>>>>>>> eed2d4c9b963a9e3cf40f02b8713c10ee2594719
     		return Redirect::to('/checkout');
     	}else{
     		return Redirect::to('/login-checkout');

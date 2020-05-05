@@ -83,7 +83,7 @@
 						</ul>
 						{{-- 	<a class="btn btn-default update" href="">Update</a> --}}
 							  <?php
-                                   $customer_id = Session::get('customer_id');
+                                   $customer_id = Session::get('ID_KH');
                                    if($customer_id!=NULL){ 
                                  ?>
                                   
