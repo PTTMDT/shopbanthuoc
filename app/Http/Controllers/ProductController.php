@@ -153,7 +153,7 @@ class ProductController extends Controller
             $details_product=$offer_details_product;
         }
         foreach($details_product as $key => $value){
-            $category_name = $value->GOC_THUOC;
+            $category_ID = $value->ID_GOC;
            }
         $offer_price = DB::table('thuoc')->select('DON_GIA_KM')->where('thuoc.product_slug',$product_slug)->get();  // lấy giá khuyến mãi trong bảng thuoc
         // if($offer==NULL) {
@@ -162,11 +162,14 @@ class ProductController extends Controller
         $related_product = DB::table('thuoc')      // các thuốc liên quan
         ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->where('thuoc.ID_GOC',$category_name)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
+        ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
+        ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
+        ->where('thuoc.ID_GOC',$category_ID)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
 
-
+      
         return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product);
 
+    //   print_r($related_product);
     }
    
    

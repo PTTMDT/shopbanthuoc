@@ -7,22 +7,22 @@
 							<img src="{{URL::to('public/uploads/product/'.$value->HINH_ANH)}}"/>
 						
 								
-								<h3>ZOOM</h3>
+								<!-- <h3>ZOOM</h3> -->
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
 								  <!-- Wrapper for slides -->
-								    <div class="carousel-inner">
+								    <!-- <div class="carousel-inner">
 
 										<div class="item active">
-										  <a href=""><img src="{{URL::to('public/frontend/images/similar1.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/frontend/images/similar2.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/frontend/images/similar3.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/h.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/m.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/n.jpg')}}" alt=""></a>
 										</div>
 										
 										
 										
-									</div>
+									</div> -->
 
 								  <!-- Controls -->
 								  <a class="left item-control" href="#similar-product" data-slide="prev">
@@ -58,7 +58,7 @@
 								</form>
 
 								<p><b>Tình trạng:</b> Còn hàng</p>
-								<p><b>Điều kiện:</b> Mơi 100%</p>
+								<p><b>Điều kiện:</b> Mới 100%</p>
 
 							    <p><b>Giá khuyến mãi:</b> {{$value->DON_GIA_KM}}</p>
 								<p><b>Danh mục:</b> {{$value->GOC_THUOC}}</p>
@@ -84,10 +84,10 @@
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="details" >
+							<!-- <div class="tab-pane fade active in" id="details" >
 								<p>{!!$value->product_desc!!}</p>
 								
-							</div>
+							</div> -->
 							
 							<div class="tab-pane fade" id="companyprofile" >
 								<!-- <p>Hàm lượng: {!!$value->HOAT_CHAT_CHINH!!}</p> -->
@@ -124,16 +124,19 @@
 							
 
 							<div class="tab-pane fade" id="reviews" >
+					
 								<div class="col-sm-12">
+							@foreach($relate as $key => $lienquan)
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+										<li><a href=""><i class="fa fa-user"></i>{{$lienquan->TEN_KH}}</a></li>
+										<li><a href=""><i class="fa fa-clock-o"></i>{{$lienquan->GIO}}</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>{{$lienquan->NGAY}}</a></li>
 									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									<p><b>Write Your Review</b></p>
+									<p>{{$lienquan->ND_DANH_GIA}}</p>
+								
+									<!-- <p><b>Write Your Review</b></p> -->
 									
-									<form action="#">
+									<!-- <form action="#">
 										<span>
 											<input type="text" placeholder="Your Name"/>
 											<input type="email" placeholder="Email Address"/>
@@ -143,8 +146,21 @@
 										<button type="button" class="btn btn-default pull-right">
 											Submit
 										</button>
-									</form>
+									</form> -->
+							@endforeach	
 								</div>
+					
+									<form action="#">
+										<span>
+											<input type="text" placeholder="Your Name"/>
+											<input type="email" placeholder="Email Address"/>
+										</span>
+										<textarea name="" ></textarea>
+										<b></b> <img src="images/product-details/rating.png" alt="" />
+										<button type="button" class="btn btn-default pull-right">
+											Submit
+										</button>
+									</form>
 							</div>
 							
 						</div>
@@ -161,10 +177,10 @@
 										<div class="product-image-wrapper">
 											 <div class="single-products">
 		                                        <div class="productinfo text-center">
-		                                            <!-- <img src="{{URL::to('public/uploads/product/'.$lienquan->HINH_ANH)}}" alt="" /> -->
+		                                            <img src="{{URL::to('public/uploads/product/'.$lienquan->HINH_ANH)}}" alt="" />
 													
-												    <h2>{{number_format($lienquan->product_price).' '.'VNĐ'}}</h2>
-		                                            <p>{{$lienquan->product_name}}</p>
+												    <h2>{{number_format($lienquan->DON_GIA).' '.'VNĐ'}}</h2>
+		                                            <p>{{$lienquan->TEN_THUOC}}</p>
 		                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
 		                                        </div>
 		                                      
