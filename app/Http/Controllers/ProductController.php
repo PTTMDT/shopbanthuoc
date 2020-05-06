@@ -149,14 +149,6 @@ class ProductController extends Controller
             $details_product=$normal_details_product;
 
         }
-<<<<<<< HEAD
-       
-
-        $related_product = DB::table('thuoc')
-        ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
-        #->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->where('goc_thuoc.ID_GOC',$category_id)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
-=======
         else {
             $details_product=$offer_details_product;
         }
@@ -171,12 +163,12 @@ class ProductController extends Controller
         ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         ->where('thuoc.ID_GOC',$category_name)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
->>>>>>> eed2d4c9b963a9e3cf40f02b8713c10ee2594719
 
 
         return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product);
 
     }
+   
    
    
 }
