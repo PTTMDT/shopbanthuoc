@@ -24,8 +24,8 @@ class CartController extends Controller
         $data['qty'] = $quantity;
         $data['name'] = $product_info->TEN_THUOC;
         $data['price'] = $product_info->DON_GIA;
-        $data['weight'] = $product_info->product_price;
-        $data['options']['image'] = $product_info->product_image;
+        $data['weight'] = $product_info->DON_GIA;
+        $data['options']['image'] = $product_info->HINH_ANH;
         Cart::add($data);
         // Cart::destroy();
         return Redirect::to('/show-cart');
