@@ -35,7 +35,8 @@ class CartController extends Controller
 
         $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get(); 
        $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
-        return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product);
+         $vc =DB::table('hinh_thuc_van_chuyen')->get();
+        return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product)->with('vc',$vc);
     }
     public function delete_to_cart($rowId){
         Cart::update($rowId,0);
