@@ -32,8 +32,8 @@
 								<a href=""><img src="{{URL::to('public/uploads/product/'.$v_content->options->image)}}" width="90" alt="" /></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{$v_content->name}}</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href="">{{$v_content->name}}{{$v_content->mount}}</a></h4>
+								<!-- <p>Web ID: 1089772</p> -->
 							</td>
 							<td class="cart_price">
 								<p>{{number_format($v_content->price).' '.'vnđ'}}</p>
@@ -44,10 +44,12 @@
 									{{ csrf_field() }}
 									<input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$v_content->qty}}"  >
 									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
+									<input type="hidden" value="{{$v_content->mount}}" name="so_luong_ton" class="form-control">
 									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
 									</form>
 								</div>
 							</td>
+						
 							<td class="cart_total">
 								<p class="cart_total_price">
 									
@@ -76,10 +78,20 @@
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Tổng <span>{{Cart::total().' '.'vnđ'}}</span></li>
+							<li>Tổng <span>{{Cart::total().' '.'vnđ'}}</li>
 							<li>Thuế <span>{{Cart::tax().' '.'vnđ'}}</span></li>
-							<li>Phí vận chuyển <span>Free</span></li>
-							<li>Thành tiền <span>{{Cart::total().' '.'vnđ'}}</span></li>
+							
+							<li>Phí vận chuyển
+							<!-- <span> -->
+                            <select style="width:60%">
+							@foreach($vc as $vc_content)
+							<option value="$vc_content->GIA_VC" >{{$vc_content->TEN_VC}} : {{$vc_content->GIA_VC.' '.'VND'}}</option>
+							@endforeach
+							<!-- </span> -->
+							</select>
+							</li>
+						
+							<!-- <li>Thành tiền <span>{{Cart::total().'vnđ'}}</span></li> -->
 						</ul>
 						{{-- 	<a class="btn btn-default update" href="">Update</a> --}}
 							  <?php
