@@ -91,8 +91,10 @@ class BrandProduct extends Controller
         $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get(); 
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
 
-        $brand_by_id = DB::table('thuoc')->join('nha_cung_cap','thuoc.ID_NCC','=','nha_cung_cap.ID_NCC')->where('nha_cung_cap.brand_slug',$brand_slug)->get();
-
+        $brand_by_id = DB::table('thuoc')->join('chi_tiet_lo','thuoc.ID_THUOC','=','chi_tiet_lo.ID_THUOC')
+        ->join('lo','chi_tiet_lo.ID_LO','=','lo.ID_LO')
+        ->join('nha_cung_cap','lo.ID_NCC','=','nha_cung_cap.ID_NCC')
+        ->where('nha_cung_cap.brand_slug',$brand_slug)->get();
         $brand_name = DB::table('nha_cung_cap')->where('nha_cung_cap.brand_slug',$brand_slug)->limit(1)->get();
 
         return view('pages.brand.show_brand')->with('category',$cate_product)->with('brand',$brand_product)->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
