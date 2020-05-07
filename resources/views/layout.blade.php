@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>Home | LYNTT-Health</title>
     <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/prettyPhoto.css')}}" rel="stylesheet">
@@ -27,25 +27,25 @@
 <body>
 
     <header id="header"><!--header-->
-        <div class="header_top"><!--header_top-->
+        <div class="header_top" style="background-color:#008B8B; color:white"><!--header_top-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href="#" style="color:white"><i class="fa fa-phone"></i> +84782925679</a></li>
+                                <li><a href="#" style="color:white"><i class="fa fa-envelope"></i>lyntthealth@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <ul class="nav navbar-nav"style="color:white">
+                                <li><a href="#" style="color:white"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" style="color:white"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" style="color:white"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#" style="color:white"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#" style="color:white"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -248,7 +248,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
-                        <h2>Danh mục sản phẩm</h2>
+                        <h2 style="color:#008B8B ">Danh mục sản phẩm</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                           @foreach($category as $key => $cate)
                            
@@ -261,7 +261,7 @@
                         </div><!--/category-products-->
                     
                         <div class="brands_products"><!--brands_products-->
-                            <h2>Thương hiệu sản phẩm</h2>
+                            <h2 style="color:#008B8B ">Thương hiệu sản phẩm</h2>
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($brand as $key => $brand)
@@ -292,7 +292,7 @@
                     <div class="col-sm-2">
                         <div class="companyinfo">
                             <h2><span>LYNTT</span>-Health</h2>
-                            <p style ="color: #000000">Cùng Khám Phá Trải NGhiệm - Nhà Thuốc Trực Tuyến</p>
+                            <h5>Cùng Khám Phá Trải NGhiệm - Nhà Thuốc Trực Tuyến</h5>
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -371,17 +371,17 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2 style ="color: #000000">Liên Hệ Với Chúng Tôi</h2>
-                            <ul class="nav nav-pills nav-stacked" >
+                            <h2>Liên Hệ Với Chúng Tôi</h2>
+                            <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Điện Thoại: 0782925679</a></li>
-                                <li><a href="#">Hotline: 1900737891</a></li>
-                                <li><a href="#">Hỗ Trợ: lyntthealth@gmail.com</a></li>
+                                <li><a href="#" >Hotline: 1900737891</a></li>
+                                <li><a href="#" >Hỗ Trợ: lyntthealth@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2 style ="color: #000000">Dịch Vụ</h2>
+                            <h2>Dịch Vụ</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Trò Chuyện Với Bác Sĩ</a></li>
                                 <li><a href="#">Nhà Thuốc LYNTT-Health</a></li>
@@ -390,7 +390,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2 style ="color: #000000">Tìm Hiểu Thêm</h2>
+                            <h2>Tìm Hiểu Thêm</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Dịch Vụ Thăm Khám</a></li>
                                 <li><a href="#">Dịch Vụ Kê Đơn Theo Toa</a></li>
@@ -400,7 +400,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2 style ="color: #000000">Hỗ Trợ Khách Hàng</h2>
+                            <h2>Hỗ Trợ Khách Hàng</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Câu Hỏi Thường Gặp</a></li>
                                 <li><a href="#">Chính Sách Bảo Mật</a></li>
@@ -424,11 +424,11 @@
             </div>
         </div>
         
-        <div class="footer-bottom">
+        <div class="footer-bottom" style="background-color:#008B8B;">
             <div class="container">
                 <div class="row">
-                    <p class="pull-left">Copyright © 2013 LYNTT-Health Inc. All rights reserved.</p>
-                    <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+                    <p class="pull-left" style="color: white">Copyright © 2020 LYNTT-Health Inc. All rights reserved.</p>
+                    <p class="pull-right" style="color: white">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
                 </div>
             </div>
         </div>
