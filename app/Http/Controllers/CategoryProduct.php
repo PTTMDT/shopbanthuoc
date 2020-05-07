@@ -90,7 +90,8 @@ class CategoryProduct extends Controller
         
         $category_name = DB::table('goc_thuoc')->where('goc_thuoc.slug_category_product',$slug_category_product)->limit(1)->get();
 
-        return view('pages.category.show_category')->with('category',$cate_product)->with('brand',$brand_product)->with('ID_GOC',$category_by_id)->with('GOC_THUOC',$category_name);
+        return view('pages.category.show_category')->with('category',$cate_product)->with('brand',$brand_product)->with('category_by_id',$category_by_id)->with('category_name',$category_name);
+   //PRINT_R($category_name);
     }
 
 }
