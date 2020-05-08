@@ -77,23 +77,23 @@
 			
 				<div class="col-sm-6">
 					<div class="total_area">
-						<ul>
+						<!-- <ul>
 							<li>Tổng <span>{{Cart::total().' '.'vnđ'}}</li>
-							<li>Thuế <span>{{Cart::tax().' '.'vnđ'}}</span></li>
+							 <li>Thuế <span>{{Cart::tax().' '.'vnđ'}}</span></li> -->
 							
-							<li>Phí vận chuyển
-							<!-- <span> -->
+							<!-- <li>Phí vận chuyển
+							 <span> 
                             <select style="width:60%">
 							@foreach($vc as $vc_content)
 							<option value="$vc_content->GIA_VC" >{{$vc_content->TEN_VC}} : {{$vc_content->GIA_VC.' '.'VND'}}</option>
 							@endforeach
-							<!-- </span> -->
+							 </span> 
 							</select>
-							</li>
+							</li> 
 						
-							<!-- <li>Thành tiền <span>{{Cart::total().'vnđ'}}</span></li> -->
-						</ul>
-						{{-- 	<a class="btn btn-default update" href="">Update</a> --}}
+							 <li>Thành tiền <span>{{Cart::total().'vnđ'}}</span></li> 
+						</ul> -->
+							<!-- <a class="btn btn-default update" href="">Update</a>  -->
 							  <?php
                                    $customer_id = Session::get('ID_KH');
                                    if($customer_id!=NULL){ 

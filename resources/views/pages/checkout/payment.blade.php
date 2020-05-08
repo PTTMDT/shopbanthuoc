@@ -38,7 +38,7 @@
 							</td>
 							<td class="cart_description">
 								<h4><a href="">{{$v_content->name}}</a></h4>
-								<p>Web ID: 1089772</p>
+								<!-- <p>Web ID: 1089772</p> -->
 							</td>
 							<td class="cart_price">
 								<p>{{number_format($v_content->price).' '.'vnđ'}}</p>
@@ -47,9 +47,9 @@
 								<div class="cart_quantity_button">
 									<form action="{{URL::to('/update-cart-quantity')}}" method="POST">
 									{{ csrf_field() }}
-									<input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$v_content->qty}}"  >
-									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
-									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+									<input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$v_content->qty}}" disable >
+									<!-- <input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control"> -->
+									<!-- <input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm"> -->
 									</form>
 								</div>
 							</td>
@@ -70,11 +70,40 @@
 					</tbody>
 				</table>
 			</div>
-			<h4 style="margin:40px 0;font-size: 20px;">Chọn hình thức thanh toán</h4>
-			<form method="POST" action="{{URL::to('/order-place')}}">
+			<!-- <h4 style="margin:40px 0;font-size: 20px;">Chọn hình thức thanh toán</h4> -->
+		
+		</div>
+	</section> <!--/#cart_items-->
+	<section id="do_action">
+	@foreach($order as $ddh)
+		<div class="container">
+		
+			<div class="row">
+			
+				<div class="col-sm-6">
+					<div class="total_area">
+						<ul>
+							<li>Tổng <span>{{$ddh->TONG_DDH.' '.'VND'}}
+						     
+							</li>
+							<li>Phí vận chuyển: <span>{{$ddh->GIA_VC.' '.'VND'}}
+							</li>
+							<li>Thành tiền <span>{{$ddh->THANH_TIEN.' '.'VND'}}
+							</li>
+						
+							<!-- <li>Thành tiền <span>{{Cart::total().'vnđ'}}</span></li> -->
+						</ul>
+							
+					</div>
+				</div>
+			</div>
+		</div>
+	@endforeach
+	</section><!--/#do_action-->
+	<form method="POST" action="{{URL::to('/order-place')}}">
 				{{ csrf_field() }}
 			<div class="payment-options">
-					<span>
+					<!-- <span>
 						<label><input name="payment_option" value="1" type="checkbox"> Trả bằng thẻ ATM</label>
 					</span>
 					<span>
@@ -82,11 +111,9 @@
 					</span>
 					<span>
 						<label><input name="payment_option" value="3" type="checkbox"> Thanh toán thẻ ghi nợ</label>
-					</span>
+					</span> -->
 					<input type="submit" value="Đặt hàng" name="send_order_place" class="btn btn-primary btn-sm">
 			</div>
 			</form>
-		</div>
-	</section> <!--/#cart_items-->
 
 @endsection

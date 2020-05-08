@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-
+@foreach($customer as $key => $value)
 <section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -23,11 +23,47 @@
 							<div class="form-one">
 								<form action="{{URL::to('/save-checkout-customer')}}" method="POST">
 									{{csrf_field()}}
-									<input type="text" name="shipping_email" placeholder="Email">
-									<input type="text" name="shipping_name" placeholder="Họ và tên">
-									<input type="text" name="shipping_address" placeholder="Địa chỉ">
-									<input type="text" name="shipping_phone" placeholder="Phone">
+									<input type="text" value="{{$value->EMAIL_KH}}" name="shipping_email" placeholder="Email" disabled>
+									<input type="text" value="{{$value->TEN_KH}}" name="shipping_name" placeholder="Họ và tên" disabled>
+									<input type="text" value="{{$value->DIA_CHI}}" name="shipping_address" placeholder="Địa chỉ" disabled>
+									<input type="text" value="{{$value->SDT}}" name="shipping_phone" placeholder="Phone" disabled>
+									<input type="text"  name="offer" placeholder="Mã khuyến mãi (nếu có)" >
 									<textarea name="shipping_notes"  placeholder="Ghi chú đơn hàng của bạn" rows="16"></textarea>
+									<!-- <input type="text" value="{{Cart::total(0,'','')}}" name="tong_tien"> -->
+									<div class="review-payment">
+			                        	<h2>Chọn dịch vụ</h2>
+			                         	<br>
+		                        	</div>
+
+		
+			                         <div class="payment-options">
+			                         @foreach($tranport as $key => $vc)
+			                   		<span>
+					                 	<label><input type="radio" name="vanchuyen" value="{{$vc->ID_VC}}"> {{$vc->TEN_VC}} </label>
+									
+				                	</span>
+		                            @endforeach	
+			                    	<!-- <span>
+			            			<label><input type="checkbox"> Check Payment</label>
+				                	</span>
+			                		<span>
+				            		<label><input type="checkbox"> Paypal</label>
+				                	</span> -->
+			                    	</div>
+		                     		<div class="payment-options">
+	                         		@foreach($payment as $key => $tt)
+			                		<span>
+				            		<label><input type="radio" name="thanhtoan" value="{{$tt->ID_HT}}"> {{$tt->TEN_HT}} </label>
+				                	</span>
+		                          @endforeach	
+					<!-- <span>
+						<label><input type="checkbox"> Check Payment</label>
+					</span>
+					<span>
+						<label><input type="checkbox"> Paypal</label>
+					</span> -->
+		                    		</div>
+									
 									<input type="submit" value="Gửi" name="send_order" class="btn btn-primary btn-sm">
 								</form>
 							</div>
@@ -37,23 +73,9 @@
 									
 				</div>
 			</div>
-			<div class="review-payment">
-				<h2>Xem lại giỏ hàng</h2>
-			</div>
-
 			
-			<div class="payment-options">
-					<span>
-						<label><input type="checkbox"> Direct Bank Transfer</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Check Payment</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Paypal</label>
-					</span>
-				</div>
 		</div>
 	</section> <!--/#cart_items-->
+@endforeach		
 
 @endsection
