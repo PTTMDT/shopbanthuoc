@@ -63,7 +63,7 @@ Route::get('/active-product/{product_id}','ProductController@active_product');
 Route::post('/save-product','ProductController@save_product');
 Route::post('/update-product/{product_id}','ProductController@update_product');
 
-
+Route::post('/add_binhluan','ProductController@add_binhluan');
 //Cart
 Route::post('/update-cart-quantity','CartController@update_cart_quantity');
 Route::post('/save-cart','CartController@save_cart');
