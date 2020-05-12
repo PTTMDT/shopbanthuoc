@@ -28,10 +28,12 @@ class CheckoutController extends Controller
         ->join('khach_hang','don_dat_hang.ID_KH','=','khach_hang.ID_KH')
         ->join('hinh_thuc_van_chuyen','don_dat_hang.ID_VC','=','hinh_thuc_van_chuyen.ID_VC')
         ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
-        ->select('don_dat_hang.*','khach_hang.*','hinh_thuc_van_chuyen.*','chi_tiet_don_dat_hang.*')->first();
+        ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+        ->select('don_dat_hang.*','khach_hang.*','hinh_thuc_van_chuyen.*','chi_tiet_don_dat_hang.*','thuoc.*')->first();
 
         $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
+        
         
     }
     public function login_checkout(){
