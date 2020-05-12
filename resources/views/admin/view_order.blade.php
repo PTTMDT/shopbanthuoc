@@ -31,8 +31,8 @@
         
           <tr>
            
-            <td>{{$order_by_id->customer_name}}</td>
-            <td>{{$order_by_id->customer_phone}}</td>
+          <td>{{$order_by_id->TEN_KH}}</td>
+          <td>{{$order_by_id->SDT}}</td>
             
            
           
@@ -66,9 +66,9 @@
         <thead>
           <tr>
            
-            <th>Tên người vận chuyển</th>
-            <th>Địa chỉ</th>
-            <th>Số điện thoại</th>
+            <th>Hình thức vận chuyển</th>
+            <th>Giá vận chuyển</th>
+            
           
             
             <th style="width:30px;"></th>
@@ -78,9 +78,9 @@
         
           <tr>
            
-            <td>{{$order_by_id->shipping_name}}</td>
-            <td>{{$order_by_id->shipping_address}}</td>
-             <td>{{$order_by_id->shipping_phone}}</td>
+            <td>{{$order_by_id->TEN_VC}}</td>
+            <td>{{$order_by_id->GIA_VC}}</td>
+             
             
            
           
@@ -103,12 +103,12 @@
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
         <select class="input-sm form-control w-sm inline v-middle">
-          <option value="0">Bulk action</option>
-          <option value="1">Delete selected</option>
-          <option value="2">Bulk edit</option>
-          <option value="3">Export</option>
+          <option value="0">Hoạt động</option>
+          <option value="1">Xóa</option>
+          <option value="2">Chỉnh sửa</option>
+          <option value="3">Xuất</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Thực hiện</button>                
       </div>
       <div class="col-sm-4">
       </div>
@@ -116,7 +116,7 @@
         <div class="input-group">
           <input type="text" class="input-sm form-control" placeholder="Search">
           <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
+            <button class="btn btn-sm btn-default" type="button">Tìm</button>
           </span>
         </div>
       </div>
@@ -151,10 +151,10 @@
           <tr>
            
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$order_by_id->product_name}}</td>
-            <td>{{$order_by_id->product_sales_quantity}}</td>
-            <td>{{$order_by_id->product_price}}</td>
-            <td>{{$order_by_id->product_price*$order_by_id->product_sales_quantity}}</td>
+            <td>{{$order_by_id->TEN_THUOC}}</td>
+            <td>{{$order_by_id->SO_LUONG}}</td>
+            <td>{{$order_by_id->DON_GIA}}</td>
+            <td>{{$order_by_id->DON_GIA*$order_by_id->SO_LUONG}}</td>
           
            
           </tr>
