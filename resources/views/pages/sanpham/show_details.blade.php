@@ -7,7 +7,7 @@
 							<img src="{{URL::to('public/uploads/product/'.$value->HINH_ANH)}}"/>
 						
 								
-								<!-- <h3>ZOOM</h3> -->
+								<!-- <h3  style="background-color: #008B8B; color: white ">ZOOM</h3> -->
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
@@ -15,9 +15,9 @@
 								    <!-- <div class="carousel-inner">
 
 										<div class="item active">
-										  <a href=""><img src="{{URL::to('public/frontend/images/h.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/frontend/images/m.jpg')}}" alt=""></a>
-										  <a href=""><img src="{{URL::to('public/frontend/images/n.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/similar1.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/similar2.jpg')}}" alt=""></a>
+										  <a href=""><img src="{{URL::to('public/frontend/images/similar3.jpg')}}" alt=""></a>
 										</div>
 										
 										
@@ -25,7 +25,7 @@
 									</div> -->
 
 								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
+								  <a class="left item-control" href="#similar-product" data-slide="prev"  style="background-color: #008B8B; color: white ">
 									<i class="fa fa-angle-left"></i>
 								  </a>
 								  <a class="right item-control" href="#similar-product" data-slide="next">
@@ -44,12 +44,12 @@
 								<form action="{{URL::to('/save-cart')}}" method="POST">
 									{{ csrf_field() }}
 								<span>
-									<span>{{number_format($value->DON_GIA).'VNĐ'}}</span>
+									<span  style="color: #008B8B;">{{number_format($value->DON_GIA).'VNĐ'}}</span>
 								
 									<label>Số lượng:</label>
 									<input name="qty" type="number" min="1"  value="1" />
 									<input name="productid_hidden" type="hidden"  value="{{$value->ID_THUOC}}" />
-									<button type="submit" class="btn btn-fefault cart">
+									<button type="submit" class="btn btn-fefault cart"  style="background-color: #008B8B; color: white ">
 										<i class="fa fa-shopping-cart"></i>
 										Thêm giỏ hàng
 									</button>
@@ -58,7 +58,7 @@
 								</form>
 
 								<p><b>Tình trạng:</b> Còn hàng</p>
-								<p><b>Điều kiện:</b> Mới 100%</p>
+								<p><b>Điều kiện:</b> Mơi 100%</p>
 
 							    <p><b>Giá khuyến mãi:</b> {{$value->DON_GIA_KM}}</p>
 								<p><b>Danh mục:</b> {{$value->GOC_THUOC}}</p>
@@ -69,8 +69,8 @@
 </div><!--/product-details-->
 
 					<div class="category-tab shop-details-tab"><!--category-tab-->
-						<div class="col-sm-12">
-							<ul class="nav nav-tabs">
+						<div class="col-sm-12"style="backgrund-color:#FFB367" >
+							<ul class="nav nav-tabs" >
 								<!-- <li class="active"><a href="#details" data-toggle="tab">Hoạt chất chính</a></li> -->
 								<!-- <li><a href="#companyprofile" data-toggle="tab">Hàm lượng</a></li>
 								<li><a href="#companyprofile" data-toggle="tab">Quy cách đóng gói</a></li>
@@ -78,16 +78,16 @@
 								<li><a href="#companyprofile" data-toggle="tab">Cách dùng</a></li>
 								<li><a href="#companyprofile" data-toggle="tab">Lưu ý</a></li>
 								 -->
-								 <li><a href="#companyprofile" data-toggle="tab">Thông tin</a></li>
+								 <li><a href="#companyprofile" data-toggle="tab" style="color: white">Thông tin</a></li>
 								
-								<li ><a href="#reviews" data-toggle="tab">Đánh giá</a></li>
+								<li ><a href="#reviews" data-toggle="tab" style="color: white">Đánh giá</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<!-- <div class="tab-pane fade active in" id="details" >
+							<div class="tab-pane fade active in" id="details" >
 								<p>{!!$value->product_desc!!}</p>
 								
-							</div> -->
+							</div>
 							
 							<div class="tab-pane fade" id="companyprofile" >
 								<!-- <p>Hàm lượng: {!!$value->HOAT_CHAT_CHINH!!}</p> -->
@@ -124,19 +124,16 @@
 							
 
 							<div class="tab-pane fade" id="reviews" >
-					
 								<div class="col-sm-12">
-							@foreach($relate as $key => $lienquan)
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>{{$lienquan->TEN_KH}}</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>{{$lienquan->GIO}}</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>{{$lienquan->NGAY}}</a></li>
+										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
+										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
 									</ul>
-									<p>{{$lienquan->ND_DANH_GIA}}</p>
-								
-									<!-- <p><b>Write Your Review</b></p> -->
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+									<p><b>Write Your Review</b></p>
 									
-									<!-- <form action="#">
+									<form action="#">
 										<span>
 											<input type="text" placeholder="Your Name"/>
 											<input type="email" placeholder="Email Address"/>
@@ -146,21 +143,8 @@
 										<button type="button" class="btn btn-default pull-right">
 											Submit
 										</button>
-									</form> -->
-							@endforeach	
-								</div>
-					
-									<form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-										<textarea name="" ></textarea>
-										<b></b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
-											Submit
-										</button>
 									</form>
+								</div>
 							</div>
 							
 						</div>
@@ -177,10 +161,10 @@
 										<div class="product-image-wrapper">
 											 <div class="single-products">
 		                                        <div class="productinfo text-center">
-		                                            <img src="{{URL::to('public/uploads/product/'.$lienquan->HINH_ANH)}}" alt="" />
+		                                            <!-- <img src="{{URL::to('public/uploads/product/'.$lienquan->HINH_ANH)}}" alt="" /> -->
 													
-												    <h2>{{number_format($lienquan->DON_GIA).' '.'VNĐ'}}</h2>
-		                                            <p>{{$lienquan->TEN_THUOC}}</p>
+												    <h2>{{number_format($lienquan->product_price).' '.'VNĐ'}}</h2>
+		                                            <p>{{$lienquan->product_name}}</p>
 		                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
 		                                        </div>
 		                                      
