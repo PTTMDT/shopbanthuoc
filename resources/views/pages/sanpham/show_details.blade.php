@@ -129,10 +129,27 @@
 							@foreach($relate as $key => $lienquan)
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i>{{$lienquan->TEN_KH}}</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>{{$lienquan->GIO}}</a></li>
+										
 										<li><a href=""><i class="fa fa-calendar-o"></i>{{$lienquan->NGAY}}</a></li>
 									</ul>
 									<p>{{$lienquan->ND_DANH_GIA}}</p>
+                                    
+                                    
+                                    <form action="{{URL::to('/add_binhluan')}}" method="POST"> 
+									    {{csrf_field()}} 
+										<span>
+											<input type="text" name="TEN_KH" placeholder="Your Name"/>
+											<input type="text" name="EMAIL_KH" placeholder="Email Address"/>
+										     <!-- <input type="text" name="ND_DANH_GIA" placeholder=""/>  -->
+										 </span>
+
+										<input type="text" name="ND_DANH_GIA"   />
+										<b></b> <img src="images/product-details/rating.png" alt="" />
+										<button type="submit" class="btn btn-default pull-right" >Submit</button>
+									</form> 
+                                    
+                                    
+                                    
 								
 									<!-- <p><b>Write Your Review</b></p> -->
 									
