@@ -33,15 +33,22 @@ class BrandProduct extends Controller
     public function save_brand_product(Request $request){
         $this->AuthLogin();
     	$data = array();
-        $data['TEN_NCC'] = $request->brand_product_name;
-        $data['SDT_NCC'] = $request->brand_sdt;
-        $data['DC_NCC'] = $request->brand_dc;
-        $data['brand_slug'] = $request->brand_slug;
-    	$data['brand_desc'] = $request->brand_product_desc;
-    	$data['brand_status'] = $request->brand_product_status;
+        // $data['TEN_NCC'] = $request->brand_product_name;
+        // $data['SDT_NCC'] = $request->brand_sdt;
+        // $data['DC_NCC'] = $request->brand_dc;
+        //$data['brand_slug'] = $request->brand_slug;
+    	//$data['brand_desc'] = $request->brand_product_desc;
+        //$data['brand_status'] = $request->brand_product_status;
+        $data['TEN_NCC'] = $request->TEN_NCC;
+        $data['SDT_NCC'] = $request->SDT_NCC;
+        $data['DC_NCC'] = $request->DC_NCC;
+        $data['brand_slug'] = $request->slug;
+        $data['brand_desc'] = $request->desc;
+        $data['brand_status'] = $request->status;
+        
 
     	DB::table('nha_cung_cap')->insert($data);
-    	Session::put('message','Thêm thương hiệu sản phẩm thành công');
+    	Session::put('message','Thêm nhà cung cấp thành công');
     	return Redirect::to('add-brand-product');
     }
     public function unactive_brand_product($brand_product_id){
@@ -66,16 +73,16 @@ class BrandProduct extends Controller
 
         return view('admin_layout')->with('admin.edit_brand_product', $manager_brand_product);
     }
-    public function update_brand_product(Request $request,$brand_product_id){
+   public function update_brand_product(Request $request,$brand_product_id){
         $this->AuthLogin();
         $data = array();
-        $data['TEN_NCC'] = $request->brand_product_name;
-        $data['SDT_NCC'] = $request->brand_sdt;
-        $data['DC_NCC'] = $request->brand_dc;
-        $data['brand_slug'] = $request->brand_slug;
-        $data['brand_desc'] = $request->brand_product_desc;
+        $data['TEN_NCC'] = $request->TEN_NCC;
+        $data['SDT_NCC'] = $request->SDT_NCC;
+        $data['DC_NCC'] = $request->DC_NCC;
+        $data['brand_slug'] = $request->slug;
+        $data['brand_desc'] = $request->desc;
         DB::table('nha_cung_cap')->where('ID_NCC',$brand_product_id)->update($data);
-        Session::put('message','Cập nhật thương hiệu sản phẩm thành công');
+        Session::put('message','Cập nhật nhà cung cấp thành công');
         return Redirect::to('all-brand-product');
     }
     public function delete_brand_product($brand_product_id){
