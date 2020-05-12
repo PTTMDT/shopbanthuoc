@@ -102,33 +102,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Danh mục sản phẩm</span>
+                        <span>Gốc thuốc</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-category-product')}}">Thêm danh mục sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-category-product')}}">Liệt kê danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('/add-category-product')}}">Thêm gốc thuốc</a></li>
+						<li><a href="{{URL::to('/all-category-product')}}">Liệt kê gốc thuốc</a></li>
                       
                     </ul>
                 </li>
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Thương hiệu sản phẩm</span>
+                        <span>Nhà cung cấp</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-brand-product')}}">Thêm hiệu sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-brand-product')}}">Liệt kê thương hiệu sản phẩm</a></li>
+						<li><a href="{{URL::to('/add-brand-product')}}">Thêm nhà cung cấp</a></li>
+						<li><a href="{{URL::to('/all-brand-product')}}">Liệt kê nhà cung cấp</a></li>
                       
                     </ul>
                 </li>
                   <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Sản phẩm</span>
+                        <span>Thuốc</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-product')}}">Liệt kê sản phẩm</a></li>
+						<li><a href="{{URL::to('/add-product')}}">Thêm thuốc</a></li>
+						<li><a href="{{URL::to('/all-product')}}">Liệt kê thuốc</a></li>
                       
                     </ul>
                 </li>
@@ -146,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>Design by <a href="http://w3layouts.com">LYNTT</a></p>
 			</div>
 		  </div>
   <!-- / footer -->
