@@ -171,6 +171,32 @@ class ProductController extends Controller
 
     //   print_r($related_product);
     }
+    
+    
+    public function add_binhluan(Request $request){
+        $data = array();
+    	$data['ID_KH'] = $request->TEN_KH;
+    	$data['ID_THUOC'] = $request->EMAIL_KH;
+    	// $data['EMAIL_KH'] = $request->customer_email;
+    	// $data['PASSWORD'] = md5($request->customer_password);
+        $data['ND_DANH_GIA'] = $request->ND_DANH_GIA;
+      
+    //    $date_time=Carbon::now('Asia/Ho_Chi_Minh'); 
+        $data['NGAY']=Carbon::now('Asia/Ho_Chi_Minh');  
+        // $data['GIO']='09:00:00';
+        
+        // $data['ID_LKH'] = 1;
+    	 DB::table('danh_gia')->insert($data);
+
+    	// Session::put('ID_KH',$customer_id);
+    	// Session::put('TEN_KH',$request->customer_name);
+        // return $date_time->toDateString();
+        // return Redirect::to('');
+
+
+
+    }
+        
    
    
    
