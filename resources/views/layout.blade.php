@@ -58,13 +58,13 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{('public/frontend/images/y.png')}}" alt="" /></a>
+                            <a href="index.html"><img src="{{('public/frontend/images/yy.png')}}" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa"data-toggle="dropdown">
                                     Vietnamese
-                                    <span class="caret"></span>
+                                    <span class="caret"></span> 
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Vietnamese</a></li>
@@ -94,7 +94,7 @@
                                    $shipping_id = Session::get('shipping_id');
                                    if($customer_id!=NULL && $shipping_id==NULL){ 
                                  ?>
-                                  <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                  <li><a href="{{URL::to('/checkout')}}" style="color:#008B8B "><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
                                 
                                 <?php
                                  }elseif($customer_id!=NULL && $shipping_id!=NULL){
@@ -145,7 +145,7 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="{{URL::to('/trang-chu')}}" class="active">Trang chủ</a></li>
+                                <li><a href="{{URL::to('/trang-chu')}}" class="active"style="color:#008B8B ">Trang chủ</a></li>
                                 <li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">THUỐC XƯƠNG KHỚP</a></li>
@@ -169,7 +169,7 @@
                             {{csrf_field()}}
                         <div class="search_box pull-right">
                             <input type="text" name="keywords_submit" placeholder="Tìm kiếm sản phẩm"/>
-                            <input type="submit" style="margin-top:0;color:#666" name="search_items" class="btn btn-primary btn-sm" value="Tìm kiếm">
+                            <input type="submit" style="margin-top:0;color:white;background-color: #008B8B " name="search_items" class="btn btn-primary btn-sm" value="Tìm kiếm">
                         </div>
                         </form>
                     </div>
@@ -192,10 +192,10 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="col-sm-6">
-                                    <h1><span>LYNTT</span>-Health</h1>
+                                    <h1><span style="color: #008B8B ">LYNTT</span>-Health</h1>
                                     <h2>Nhà Thuốc Trực Tuyến Thân Thiện Cho Mọi Gia Đình</h2>
                                     <p>Tự tạo đơn thuốc, Free ship cho hóa đơn từ 100.000đ trở lên</p>
-                                    <button type="button" class="btn btn-default get">ĐẶT THUỐC NGAY</button>
+                                    <button type="button" class="btn btn-default get"style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{('public/frontend/images/c.jpg')}}" class="girl img-responsive" alt="" />
@@ -204,10 +204,10 @@
                             </div>
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <h1><span>LYNTT</span>-Health</h1>
+                                    <h1><span style="color: #008B8B ">LYNTT</span>-Health</h1>
                                     <h2>Mở Rộng Phạm Vi Giao Hàng</h2>
                                     <p>Những Sản Phẩm Cần Thiết Trong MÙa Dịch Covid-19 Đáp Ứng Nhu Cầu Khắp Mọi Nơi </p>
-                                    <button type="button" class="btn btn-default get">ĐẶT THUỐC NGAY</button>
+                                    <button type="button" class="btn btn-default get" style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{('public/frontend/images/d.jpg')}}" class="girl img-responsive" alt="" />
@@ -217,10 +217,10 @@
                             
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <h1><span>LYNTT</span>-Health</h1>
+                                    <h1><span style="color: #008B8B ">LYNTT</span>-Health</h1>
                                     <h2>Nhanh & Tiện Lợi</h2>
                                     <p>Tiết Kiệm Ngay 10% Trên Tổng Giá Trị Đơn Hàng </p>
-                                    <button type="button" class="btn btn-default get">ĐẶT THUỐC NGAY</button>
+                                    <button type="button" class="btn btn-default get" style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{('public/frontend/images/E.jpg')}}" class="girl img-responsive" alt="" />
@@ -291,7 +291,7 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="companyinfo">
-                            <h2><span>LYNTT</span>-Health</h2>
+                            <h2><span style="color: #008B8B ">LYNTT</span>-Health</h2>
                             <h5>Cùng Khám Phá Trải NGhiệm - Nhà Thuốc Trực Tuyến</h5>
                         </div>
                     </div>
@@ -411,10 +411,10 @@
                     </div>
                     <div class="col-sm-3 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2 style ="color: #FF8C00">LYNTT-Health</h2>
+                            <h2 style ="color: #FF8C00;color: #008B8B ">LYNTT-Health</h2>
                             <form action="#" class="searchform">
                                 <input type="text" placeholder="Your email address" />
-                                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                <button type="submit" class="btn btn-default" style="background-color: #008B8B "><i class="fa fa-arrow-circle-o-right"></i></button>
                                 <p>Địa Chỉ: 17/140b Nguyễn Văn CỪ Ninh Kiều Cần Thơ <br />Hân Hạnh Được Phục Vụ Quý Khách Hàng</p>
                             </form>
                         </div>
