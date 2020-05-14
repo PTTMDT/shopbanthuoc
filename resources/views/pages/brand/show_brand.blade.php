@@ -8,7 +8,7 @@
 
                         @endforeach
                         @foreach($brand_by_id as $key => $product)
-                        <a href="{{URL::to('/chi-tiet-san-pham/'.$product->ID_THUOC)}}">
+                        <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_slug)}}">
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
         
