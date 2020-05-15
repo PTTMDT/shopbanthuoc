@@ -42,7 +42,6 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên khuyến mãi</th>
             <th>Giá trị khuyến mãi</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
