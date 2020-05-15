@@ -64,6 +64,19 @@ Route::post('/save-product','ProductController@save_product');
 Route::post('/update-product/{product_id}','ProductController@update_product');
 
 Route::post('/add_binhluan','ProductController@add_binhluan');
+//khuyenmai
+Route::get('/add-KM-product','KMController@addKM_product');
+Route::get('/editKM-product/{KM_id}','KMController@editKM_product');
+Route::get('/deleteKM-product/{KM_id}','KMController@deleteKM_product');
+Route::get('/all-KM-product','KMController@allKM_product');
+
+Route::get('/unactiveKM-product/{KM_id}','KMController@unactiveKM_product');
+Route::get('/activeKM-product/{KM_id}','KMController@activeKM_product');
+
+Route::post('/saveKM-product','KMController@saveKM_product');
+Route::post('/updateKM-product/{KM_id}','KMController@updateKM_product');
+
+Route::post('/add_binhluan','ProductController@add_binhluan');
 //Cart
 Route::post('/update-cart-quantity','CartController@update_cart_quantity');
 Route::post('/save-cart','CartController@save_cart');
