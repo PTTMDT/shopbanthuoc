@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-
+use Carbon\Carbon;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -86,6 +86,7 @@ class AdminController extends Controller
          return view('admin.dashboard')->with('thuoc', $thuoc )->with('dondathang', $order)->with('khachhang',$khachhang)->with('doanhthu',$doanhthu)->with('thuochethan',$ngayhethan)->with('thuocbanchay',$thuocbanchay)->with('doanhthuthang',$dothidoanhthu);
         //    print_r($doanhthuthang);
         }
+   }
     public function dashboard(Request $request){
     	$admin_email = $request->EMAIL_NV;
     	$admin_password = md5($request->PASSWORD);
