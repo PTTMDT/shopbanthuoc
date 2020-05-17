@@ -114,7 +114,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.payment')->with('category',$cate_product) ->with('brand',$brand_product)->with('order',$order);
 
     }
-    public function order_place(Request $request){
+      public function order_place(Request $request){
         //insert payment_method
      
         // $data = array();
@@ -145,7 +145,10 @@ class CheckoutController extends Controller
             // $order_d_data[''] = $v_content->name;
             $order_d_data['DON_GIA'] = $v_content->price;
             $order_d_data['SO_LUONG'] = $v_content->qty;
+            $thuocton=DB::table('thuoc')->where('ID_THUOC',$v_content->id)->value('SO_LUONG_TON');
+            $thuocconlai=$thuocton - $v_content->qty;
             DB::table('chi_tiet_don_dat_hang')->insert($order_d_data);
+            DB::table('thuoc')->where('ID_THUOC',$v_content->id)->update(['SO_LUONG_TON'=>$thuocconlai]);
         }
         // if($data['payment_method']==1){
 
