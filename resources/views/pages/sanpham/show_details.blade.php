@@ -84,10 +84,10 @@
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="details" >
+							<!-- <div class="tab-pane fade active in" id="details" >
 								<p>{!!$value->product_desc!!}</p>
 								
-							</div>
+							</div> -->
 							
 							<div class="tab-pane fade" id="companyprofile" >
 								<!-- <p>Hàm lượng: {!!$value->HOAT_CHAT_CHINH!!}</p> -->
@@ -198,7 +198,7 @@
 													
 												    <h2>{{number_format($lienquan->DON_GIA).' '.'VNĐ'}}</h2>
 		                                            <p>{{$lienquan->TEN_THUOC}}</p>
-		                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+		                                            <a href="{{URL::to('/chi-tiet-san-pham/'.$lienquan->product_slug)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
 		                                        </div>
 		                                      
                                 			</div>
