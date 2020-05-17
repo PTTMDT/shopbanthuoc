@@ -47,7 +47,7 @@
 									<span  style="color: #008B8B;">{{number_format($value->DON_GIA).'VNĐ'}}</span>
 								
 									<label>Số lượng:</label>
-									<input name="qty" type="number" min="1"  value="1" />
+									<input name="qty" type="number" min="1" max="{{$value->SO_LUONG_TON}}" value="1" />
 									<input name="productid_hidden" type="hidden"  value="{{$value->ID_THUOC}}" />
 									<button type="submit" class="btn btn-fefault cart"  style="background-color: #008B8B; color: white ">
 										<i class="fa fa-shopping-cart"></i>
