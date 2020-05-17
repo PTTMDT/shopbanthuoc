@@ -44,21 +44,20 @@ class CartController extends Controller
         Cart::update($rowId,0);
         return Redirect::to('/show-cart');
     }
-   public function update_cart_quantity(Request $request){
-        $so_luong_ton=$request->so_luong_ton;
-
+  public function update_cart_quantity(Request $request){
+        $idthuoc=$request->idthuoc;
+        $soluongton=DB::table('thuoc')->where('ID_THUOC',$idthuoc)->value('SO_LUONG_TON');
         $rowId = $request->rowId_cart;
-        if ($rowId<=$so_luong_ton){
-            $qty = $request->cart_quantity;
-
+        $qty = $request->cart_quantity;
+        if ($qty<=$soluongton){
             Cart::update($rowId,$qty);
             return Redirect::to('/show-cart');
-
         }
         else {
-        
+           
             return Redirect::to('/show-cart');
         }
+        // print_r($soluongton);
     }
     
 }
