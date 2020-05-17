@@ -32,7 +32,7 @@
 								<a href=""><img src="{{URL::to('public/uploads/product/'.$v_content->options->image)}}" width="90" alt="" /></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{$v_content->name}}{{$v_content->mount}}</a></h4>
+								<h4><a href="">{{$v_content->name}}</a></h4>
 								<!-- <p>Web ID: 1089772</p> -->
 							</td>
 							<td class="cart_price">
@@ -44,8 +44,9 @@
 									{{ csrf_field() }}
 									<input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$v_content->qty}}"  >
 									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
-									<input type="hidden" value="{{$v_content->mount}}" name="so_luong_ton" class="form-control">
+									<input type="hidden" value="{{$v_content->id}}" name="idthuoc" class="form-control">
 									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+									
 									</form>
 								</div>
 							</td>
