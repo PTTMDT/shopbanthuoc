@@ -70,10 +70,11 @@ class CheckoutController extends Controller
         return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product)->with('customer',$customer)->with('tranport',$tranport)->with('payment',$payment);
         // print_r($customer);
     }
-    public function save_checkout_customer(Request $request){
+     public function save_checkout_customer(Request $request){
         $data = array();
         $id_customer=Session::get('ID_KH');
         $shipping_id=$request->vanchuyen;
+        $id_km=$request->offer;
         $vc=DB::table('hinh_thuc_van_chuyen')->select('GIA_VC')->where('ID_VC',$shipping_id)->value('GIA_VC');
         $data['ID_VC'] =$request->vanchuyen;
         $data['ID_KH']=$id_customer;
@@ -92,8 +93,14 @@ class CheckoutController extends Controller
         $total= Cart::total(0,'','');
         // $total_convert=chop($total,',');
         $data['TONG_DDH'] = $total;
-        
-        $total_order= $vc + $total;
+        if($id_km==NULL){
+            $total_order= $vc + $total;
+        }
+        else { 
+            $gtrikm=DB::table('khuyen_mai')->where('ID_KM',$id_km)->value('GIA_TRI_KM');
+            $total_order= ($vc + $total) - ($vc + $total)*$gtrikm;
+        }
+       
         $data['THANH_TIEN']=  $total_order;
     	$id_DDH= DB::table('don_dat_hang')->insertGetId($data);
 
