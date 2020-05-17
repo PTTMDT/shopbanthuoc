@@ -394,6 +394,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/ -->
 					<div class="col-md-8 stats-info stats-last widget-shadow">
 						<div class="stats-last-agile">
 							<table class="table stats-table ">
+                            <div class="stats-title">
+								<h4 class="title">Thuốc sắp hết hạn</h4>
+							</div>
 								<thead>
 									<tr>
 										<th>Mã thuốc</th>
