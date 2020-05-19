@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 class ProductController extends Controller
@@ -162,25 +163,37 @@ class ProductController extends Controller
         $related_product = DB::table('thuoc')      // các thuốc liên quan
         ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
-        ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
+        // ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
+        // ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
         ->where('thuoc.ID_GOC',$category_ID)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
-
+        $danhgia=DB::table('danh_gia')      // các thuốc liên quan
+        ->join('thuoc','thuoc.ID_THUOC','=','danh_gia.ID_THUOC')
+        // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        // ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
+        ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
+        ->where('thuoc.product_slug',$product_slug)->get();
+        $idthuoc=DB::table('thuoc')   
+        ->where('thuoc.product_slug',$product_slug)->value('ID_THUOC');
       
-        return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product);
+        Session::put('ID_THUOC',$idthuoc);
+        Session::put('product_slug',$product_slug);
+        return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product)->with('danhgia',$danhgia);
 
-    //   print_r($related_product);
+    //   print_r($danhgia);
     }
     
     
     public function add_binhluan(Request $request){
         $data = array();
-    	$data['ID_KH'] = $request->TEN_KH;
-    	$data['ID_THUOC'] = $request->EMAIL_KH;
-    	// $data['EMAIL_KH'] = $request->customer_email;
-    	// $data['PASSWORD'] = md5($request->customer_password);
-        $data['ND_DANH_GIA'] = $request->ND_DANH_GIA;
-      
+        $tenkh = $request->TEN_KH;
+        $email = $request->EMAIL_KH;
+        $khachhang=DB::table('khach_hang')->where([
+            ['TEN_KH', '=', $tenkh],
+            ['EMAIL_KH', '=', $email]
+        ])->value('ID_KH');
+        $data['ID_THUOC']=Session::get('ID_THUOC');
+        $data['ND_DANH_GIA'] = $request->nd_danhgia;
+        $data['ID_KH']=$khachhang;
     //    $date_time=Carbon::now('Asia/Ho_Chi_Minh'); 
         $data['NGAY']=Carbon::now('Asia/Ho_Chi_Minh');  
         // $data['GIO']='09:00:00';
@@ -188,16 +201,10 @@ class ProductController extends Controller
         // $data['ID_LKH'] = 1;
     	 DB::table('danh_gia')->insert($data);
 
-    	// Session::put('ID_KH',$customer_id);
-    	// Session::put('TEN_KH',$request->customer_name);
-        // return $date_time->toDateString();
-        // return Redirect::to('');
-
-
+        $product_slug=Session::get('product_slug');
+        return Redirect::to('chi-tiet-san-pham/'.$product_slug);
 
     }
-        
+    
    
-   
-   
-}
+}   

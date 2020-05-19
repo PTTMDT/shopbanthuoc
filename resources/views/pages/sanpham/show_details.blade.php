@@ -126,58 +126,41 @@
 							<div class="tab-pane fade" id="reviews" >
 					
 								<div class="col-sm-12">
-							@foreach($relate as $key => $lienquan)
+							@foreach($danhgia as $key => $value)
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>{{$lienquan->TEN_KH}}</a></li>
+										<li><a href=""><i class="fa fa-user"></i>{{$value->TEN_KH}}</a></li>
 										
-										<li><a href=""><i class="fa fa-calendar-o"></i>{{$lienquan->NGAY}}</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>{{$value->NGAY}}</a></li>
 									</ul>
-									<p>{{$lienquan->ND_DANH_GIA}}</p>
+									<p>{{$value->ND_DANH_GIA}}</p>
                                     
-                                    
+							@endforeach	     
+							        <hr/>
                                     <form action="{{URL::to('/add_binhluan')}}" method="POST"> 
 									    {{csrf_field()}} 
 										<span>
 											<input type="text" name="TEN_KH" placeholder="Your Name"/>
 											<input type="text" name="EMAIL_KH" placeholder="Email Address"/>
-										     <!-- <input type="text" name="ND_DANH_GIA" placeholder=""/>  -->
-										 </span>
+										     <!-- <input type="text" name="ND_DANH_GIA" placeholder=""/>  --> 
+										</span> 
 
-										<input type="text" name="ND_DANH_GIA"   />
+										<textarea name="nd_danhgia" ></textarea>
 										<b></b> <img src="images/product-details/rating.png" alt="" />
 										<button type="submit" class="btn btn-default pull-right" >Submit</button>
-									</form> 
-                                    
-                                    
-                                    
-								
-									<!-- <p><b>Write Your Review</b></p> -->
-									
+									</form> 	 
+								</div> 
+					
 									<!-- <form action="#">
 										<span>
 											<input type="text" placeholder="Your Name"/>
 											<input type="email" placeholder="Email Address"/>
 										</span>
 										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
-											Submit
-										</button>
-									</form> -->
-							@endforeach	
-								</div>
-					
-									<form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-										<textarea name="" ></textarea>
 										<b></b> <img src="images/product-details/rating.png" alt="" />
 										<button type="button" class="btn btn-default pull-right">
 											Submit
 										</button>
-									</form>
+									</form> -->
 							</div>
 							
 						</div>
