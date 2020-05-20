@@ -203,14 +203,17 @@ class ProductController extends Controller
     
     
     
-    public function add_binhluan(Request $request){
+       public function add_binhluan(Request $request){
         $data = array();
-    	$data['ID_KH'] = $request->TEN_KH;
-    	$data['ID_THUOC'] = $request->EMAIL_KH;
-    	// $data['EMAIL_KH'] = $request->customer_email;
-    	// $data['PASSWORD'] = md5($request->customer_password);
-        $data['ND_DANH_GIA'] = $request->ND_DANH_GIA;
-      
+        $tenkh = $request->TEN_KH;
+        $email = $request->EMAIL_KH;
+        $khachhang=DB::table('khach_hang')->where([
+            ['TEN_KH', '=', $tenkh],
+            ['EMAIL_KH', '=', $email]
+        ])->value('ID_KH');
+        $data['ID_THUOC']=Session::get('ID_THUOC');
+        $data['ND_DANH_GIA'] = $request->nd_danhgia;
+        $data['ID_KH']=$khachhang;
     //    $date_time=Carbon::now('Asia/Ho_Chi_Minh'); 
         $data['NGAY']=Carbon::now('Asia/Ho_Chi_Minh');  
         // $data['GIO']='09:00:00';
@@ -218,12 +221,8 @@ class ProductController extends Controller
         // $data['ID_LKH'] = 1;
     	 DB::table('danh_gia')->insert($data);
 
-    	// Session::put('ID_KH',$customer_id);
-    	// Session::put('TEN_KH',$request->customer_name);
-        // return $date_time->toDateString();
-        // return Redirect::to('');
-
-
+        $product_slug=Session::get('product_slug');
+        return Redirect::to('chi-tiet-san-pham/'.$product_slug);
 
     }
         
