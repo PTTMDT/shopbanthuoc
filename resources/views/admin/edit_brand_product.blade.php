@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                           Cập nhật thương hiệu sản phẩm
+                           Cập nhật nhà cung cấp
                         </header>
                          <?php
                             $message = Session::get('message');
@@ -16,22 +16,34 @@
                         <div class="panel-body">
                             @foreach($edit_brand_product as $key => $edit_value)
                             <div class="position-center">
-                                <form role="form" action="{{URL::to('/update-brand-product/'.$edit_value->brand_id)}}" method="post">
+                                <form role="form" action="{{URL::to('/update-brand-product/'.$edit_value->ID_NCC)}}" method="post">
                                     {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên danh mục</label>
-                                    <input type="text" value="{{$edit_value->brand_name}}" name="brand_product_name" class="form-control" id="exampleInputEmail1" >
+                                    <label for="exampleInputEmail1">Tên nhà cung cấp</label>
+                                    <input type="text" value="{{$edit_value->TEN_NCC}}" name="ten_ncc" class="form-control" id="exampleInputEmail1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Số điện thoại nhà cung cấp</label>
+                                    <input type="text" value="{{$edit_value->SDT_NCC}}" name="sdt" class="form-control" id="exampleInputEmail1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Địa chỉ nhà cung cấp</label>
+                                    <input type="text" value="{{$edit_value->DC_NCC}}" name="dia_chi" class="form-control" id="exampleInputEmail1" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Slug</label>
-                                    <input type="text" value="{{$edit_value->brand_slug}}" name="brand_product_name" class="form-control" id="exampleInputEmail1" >
+                                    <input type="text" value="{{$edit_value->brand_slug}}" name="slug" class="form-control" id="exampleInputEmail1" >
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Mô tả danh mục</label>
-                                    <textarea style="resize: none" rows="8" class="form-control" name="brand_product_desc" id="exampleInputPassword1" >{{$edit_value->brand_desc}}</textarea>
+                                    <label for="exampleInputEmail1">Desc</label>
+                                    <input type="text" value="{{$edit_value->brand_desc}}" name="desc" class="form-control" id="exampleInputEmail1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Status</label>
+                                    <input type="text" value="{{$edit_value->brand_status}}" name="status" class="form-control" id="exampleInputEmail1" >
                                 </div>
                                
-                                <button type="submit" name="update_brand_product" class="btn btn-info">Cập nhật danh mục</button>
+                                <button type="submit" name="update_brand_product" class="btn btn-info">Cập nhật nhà cung cấp</button>
                                 </form>
                             </div>
                             @endforeach
