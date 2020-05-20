@@ -152,7 +152,7 @@ class ProductController extends Controller
         return Redirect::to('all-product');
     }
     //End Admin Page
-    public function details_product($product_slug){
+      public function details_product($product_slug){
         $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get(); 
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
         // $offer_product = DB::table('khuyen_mai')->orderby('ID_KM','desc')->get(); 
@@ -182,15 +182,25 @@ class ProductController extends Controller
         $related_product = DB::table('thuoc')      // các thuốc liên quan
         ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
-        ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
+        // ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
+        // ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
         ->where('thuoc.ID_GOC',$category_ID)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
-
+        $danhgia=DB::table('danh_gia')      // các thuốc liên quan
+        ->join('thuoc','thuoc.ID_THUOC','=','danh_gia.ID_THUOC')
+        // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
+        // ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
+        ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
+        ->where('thuoc.product_slug',$product_slug)->get();
+        $idthuoc=DB::table('thuoc')   
+        ->where('thuoc.product_slug',$product_slug)->value('ID_THUOC');
       
-        return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product);
+        Session::put('ID_THUOC',$idthuoc);
+        Session::put('product_slug',$product_slug);
+        return view('pages.sanpham.show_details')->with('category',$cate_product)->with('brand',$brand_product)->with('product_details',$details_product)->with('relate',$related_product)->with('danhgia',$danhgia);
 
-    //   print_r($related_product);
+    //   print_r($danhgia);
     }
+    
     
     
     public function add_binhluan(Request $request){
