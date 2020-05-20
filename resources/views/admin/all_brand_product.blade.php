@@ -72,7 +72,7 @@
             <td>
               <a href="{{URL::to('/edit-brand-product/'.$brand_pro->ID_NCC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/delete-brand-product/'.$brand_pro->ID_NCC)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa nhà cung cấp này ko?')" href="{{URL::to('/delete-brand-product/'.$brand_pro->ID_NCC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
