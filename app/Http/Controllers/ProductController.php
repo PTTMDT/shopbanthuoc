@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 class ProductController extends Controller
