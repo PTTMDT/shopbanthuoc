@@ -3,7 +3,7 @@
     <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Liệt kê thương hiệu sản phẩm
+      Liệt kê nhà cung cấp thuốc
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -42,7 +42,7 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên thương hiệu</th>
+            <th>Tên nhà cung cấp</th>
             <th>Brand Slug</th>
             <th>Hiển thị</th>
             
@@ -85,7 +85,7 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm">Hiển thị 20 - 30 trên 50 mặt hàng</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
