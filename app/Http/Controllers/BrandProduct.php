@@ -65,7 +65,7 @@ class BrandProduct extends Controller
         return Redirect::to('all-brand-product');
 
     }
-    public function edit_brand_product($brand_product_id){
+     public function edit_brand_product($brand_product_id){
         $this->AuthLogin();
         $edit_brand_product = DB::table('nha_cung_cap')->where('ID_NCC',$brand_product_id)->get();
 
