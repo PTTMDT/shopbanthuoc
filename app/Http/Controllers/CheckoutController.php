@@ -22,18 +22,21 @@ class CheckoutController extends Controller
             return Redirect::to('admin')->send();
         }
     }
-    public function view_order($orderId){
+   public function view_order($orderId){
         $this->AuthLogin();
         $order_by_id = DB::table('don_dat_hang')
         ->join('khach_hang','don_dat_hang.ID_KH','=','khach_hang.ID_KH')
+        ->join('nhan_vien','don_dat_hang.ID_NV','=','nhan_vien.ID_NV')
         ->join('hinh_thuc_van_chuyen','don_dat_hang.ID_VC','=','hinh_thuc_van_chuyen.ID_VC')
+        ->join('hinh_thuc_thanh_toan','don_dat_hang.ID_HT','=','hinh_thuc_thanh_toan.ID_HT')
         ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
         ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
-        ->select('don_dat_hang.*','khach_hang.*','hinh_thuc_van_chuyen.*','chi_tiet_don_dat_hang.*','thuoc.*')->first();
+        ->where('don_dat_hang.ID_DDH',$orderId)
+        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*','chi_tiet_don_dat_hang.*','thuoc.*')->first();
 
         $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
-        
+        // print_r($order_by_id);
         
     }
     public function login_checkout(){
@@ -194,12 +197,15 @@ class CheckoutController extends Controller
     	
 
     }
-    public function manage_order(){
+     public function manage_order(){
         
         $this->AuthLogin();
         $all_order = DB::table('don_dat_hang')
         ->join('khach_hang','don_dat_hang.ID_KH','=','khach_hang.ID_KH')
-        ->select('don_dat_hang.*','khach_hang.TEN_KH')
+        ->join('nhan_vien','don_dat_hang.ID_NV','=','nhan_vien.ID_NV')
+        ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+        ->join('trang_thai','don_dat_hang.ID_TT','=','trang_thai.ID_TT')
+        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','chi_tiet_don_dat_hang.*','trang_thai.*')
         ->orderby('don_dat_hang.ID_DDH','desc')->get();
         $manager_order  = view('admin.manage_order')->with('all_order',$all_order);
         return view('admin_layout')->with('admin.manage_order', $manager_order);
