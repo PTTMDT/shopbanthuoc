@@ -108,4 +108,8 @@ Route::get('/activelo-product/{lo_id}','LoController@activelo_product');
 
 Route::post('/savelo-product','LoController@savelo_product');
 Route::post('/updatelo-product/{lo_id}','LoController@updatelo_product');
-
+//history order
+Route::get('/login','historyController@login');
+Route::post('/login_history','historyController@login_history');
+Route::post('/add_customer','historyController@add_customer');
+Route::get('/history','historyController@show_history');
