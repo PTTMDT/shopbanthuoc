@@ -160,7 +160,7 @@
                                
                                 </li> 
                                 <li><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
-                                <li><a href="contact-us.html">Liên hệ</a></li>
+                                 <li><a href="{{URL::to('/login')}}">Lịch sử mua hàng</a></li>
                             </ul>
                         </div>
                     </div>
