@@ -43,6 +43,9 @@
               </label>
             </th>
             <th>Tên người đặt</th>
+            <th>Tên nhân viên</th>
+            <th>Ngày đặt</th>
+            <th>Tổng đơn hàng</th>
             <th>Tổng giá tiền</th>
             <th>Tình trạng</th>
             <th>Hiển thị</th>
@@ -55,7 +58,11 @@
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{ $order->TEN_KH}}</td>
+            <td>{{ $order->TEN_NV}}</td>
+            <td>{{ $order->NGAY_DAT}}</td>
             <td>{{ $order->TONG_DDH}}</td>
+            <td>{{$order->DON_GIA*$order->SO_LUONG}}</td>
+            <td>{{ $order->TEN_TT}}</td>
             
            
             <td>
