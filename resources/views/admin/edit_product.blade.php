@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                           Cập nhật sản phẩm
+                           Cập nhật thuốc
                         </header>
                          <?php
                             $message = Session::get('message');
@@ -17,54 +17,90 @@
 
                             <div class="position-center">
                                 @foreach($edit_product as $key => $pro)
-                                <form role="form" action="{{URL::to('/update-product/'.$pro->product_id)}}" method="post" enctype="multipart/form-data">
+                                <form role="form" action="{{URL::to('/update-product/'.$pro->ID_THUOC)}}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                    <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" value="{{$pro->product_name}}">
+                                    <label for="exampleInputEmail1">Tên thuốc</label>
+                                    <input type="text" name="ten_thuoc" class="form-control" id="exampleInputEmail1" value="{{$pro->TEN_THUOC}}">
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Slug</label>
                                     <input type="text" name="product_slug" class="form-control" id="exampleInputEmail1" value="{{$pro->product_slug}}">
                                 </div>
                                      <div class="form-group">
-                                    <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                    <input type="text" value="{{$pro->product_price}}" name="product_price" class="form-control" id="exampleInputEmail1" >
+                                    <label for="exampleInputEmail1">Giá thuốc</label>
+                                    <input type="text" value="{{$pro->DON_GIA}}" name="don_gia" class="form-control" id="exampleInputEmail1" >
                                 </div>
                                   <div class="form-group">
-                                    <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                                    <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
-                                    <img src="{{URL::to('public/uploads/product/'.$pro->product_image)}}" height="100" width="100">
+                                    <label for="exampleInputEmail1">Hình ảnh</label>
+                                    <input type="file" name="hinh_anh" class="form-control" id="exampleInputEmail1">
+                                    <img src="{{URL::to('public/uploads/product/'.$pro->HINH_ANH)}}" height="100" width="100">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                                    <textarea style="resize: none" rows="8" class="form-control" name="product_desc" id="exampleInputPassword1">{{$pro->product_desc}}</textarea>
+                                    <label for="exampleInputPassword1">Tác dụng thuốc</label>
+                                    <textarea style="resize: none" rows="8" class="form-control" name="tac_dung" id="exampleInputPassword1">{{$pro->TAC_DUNG}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Hàm lượng</label>
+                                    <input type="text" name="ham_luong" class="form-control" id="exampleInputEmail1" value="{{$pro->HAM_LUONG}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Quy cách đóng gói</label>
+                                    <input type="text" value="{{$pro->QUY_CACH_DONG_GOI}}" name="quy_cach" class="form-control" id="exampleInputEmail1" placeholder="Quy cách đóng gói">
                                 </div>
                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                                    <textarea style="resize: none" rows="8" class="form-control" name="product_content" id="exampleInputPassword1" >{{$pro->product_content}}</textarea>
+                                    <label for="exampleInputPassword1">Hoạt chất chính</label>
+                                    <textarea style="resize: none" rows="8" class="form-control" name="hoat_chat_chinh" id="exampleInputPassword1" >{{$pro->HOAT_CHAT_CHINH}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Desc</label>
+                                    <input type="text" value="{{$pro->product_desc}}" name="product_desc" class="form-control" id="exampleInputEmail1" placeholder="Desc">
                                 </div>
                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Danh mục sản phẩm</label>
+                                    <label for="exampleInputPassword1">Danh mục thuốc</label>
                                       <select name="product_cate" class="form-control input-sm m-bot15">
                                         @foreach($cate_product as $key => $cate)
-                                            @if($cate->category_id==$pro->category_id)
-                                            <option selected value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                                            @if($cate->ID_GOC==$pro->ID_GOC)
+                                            <option selected value="{{$cate->ID_GOC}}">{{$cate->GOC_THUOC}}</option>
                                             @else
-                                            <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                                            <option value="{{$cate->ID_GOC}}">{{$cate->GOC_THUOC}}</option>
                                             @endif
                                         @endforeach
                                             
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Khuyến mãi</label>
+                                    <input type="text" value="{{$pro->ID_KM}}" name="khuyen_mai" class="form-control" id="exampleInputEmail1" >
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Đơn giá khuyến mãi</label>
+                                    <input type="text" value="{{$pro->DON_GIA_KM}}" name="don_gia_km" class="form-control" id="exampleInputEmail1" placeholder="Đơn giá khuyến mãi (nếu có)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Đơn vị tính</label>
+                                       <select  name="dvt" class="form-control input-sm m-bot15">
+                                      
+                                            <option value="{{$pro->DVT}}">{{$pro->DVT}}</option>
+                                            @foreach($DVT as $value)
+                                            <option value="{{$value->DVT}}">{{$value->DVT}}</option>
+                                            @endforeach
+                                     
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Số lượng tồn</label>
+                                    <input type="text" value="{{$pro->SO_LUONG_TON}}" name="so_luong_ton" class="form-control" id="exampleInputEmail1" placeholder="Số lượng tồn">
+                                </div>
                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Thương hiệu</label>
+                                    <label for="exampleInputPassword1">Nhà cung cấp</label>
                                       <select name="product_brand" class="form-control input-sm m-bot15">
                                         @foreach($brand_product as $key => $brand)
-                                             @if($cate->category_id==$pro->category_id)
-                                            <option selected value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+                                             @if($cate->ID_GOC==$pro->ID_GOC)
+                                            <option selected value="{{$brand->ID_NCC}}">{{$brand->TEN_NCC}}</option>
                                              @else
-                                            <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+                                            <option value="{{$brand->ID_NCC}}">{{$brand->TEN_NCC}}</option>
                                              @endif
                                         @endforeach
                                             
@@ -79,7 +115,7 @@
                                     </select>
                                 </div>
                                
-                                <button type="submit" name="add_product" class="btn btn-info">Cập nhật sản phẩm</button>
+                                <button type="submit" name="add_product" class="btn btn-info">Cập nhật thuốc</button>
                                 </form>
                                 @endforeach
                             </div>
