@@ -97,5 +97,15 @@ Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer
 //Order
 Route::get('/manage-order','CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','CheckoutController@view_order');
+// LO
+Route::get('/add-lo-product','LoController@addlo_product');
+Route::get('/editlo-product/{lo_id}','LoController@editlo_product');
+Route::get('/deletelo-product/{lo_id}','LoController@deletelo_product');
+Route::get('/all-lo-product','LoController@alllo_product');
 
+Route::get('/unactivelo-product/{lo_id}','LoController@unactivelo_product');
+Route::get('/activelo-product/{lo_id}','LoController@activelo_product');
+
+Route::post('/savelo-product','LoController@savelo_product');
+Route::post('/updatelo-product/{lo_id}','LoController@updatelo_product');
 
