@@ -23,7 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <div class="log-w3">
 <div class="w3layouts-main">
-	<h2>Đăng nhập</h2>
+	<h2 style="color:#008080">Đăng nhập</h2>
 	<?php
 	$message = Session::get('message');
 	if($message){

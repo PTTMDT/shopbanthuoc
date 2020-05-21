@@ -27,12 +27,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('public/backend/js/morris.js')}}"></script>
 </head>
 <body>
-<section id="container">
+<section id="container" >
 <!--header start-->
-<header class="header fixed-top clearfix">
+<header class="header fixed-top clearfix" style="background-color:#595959">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo"style="color:#008080;">
         ADMIN
     </a>
     <div class="sidebar-toggle-box">
@@ -41,16 +41,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!--logo end-->
 
-<div class="top-nav clearfix">
+<div class="top-nav clearfix" >
     <!--search & user info start-->
-    <ul class="nav pull-right top-menu">
+    <ul class="nav pull-right top-menu"style="backround-color:#32323a;">
         <li>
-            <input type="text" class="form-control search" placeholder=" Search">
+            <input type="text" class="form-control search" placeholder=" Search"style="background-color:#008080;">
         </li>
         <!-- user login dropdown start-->
         <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="{{('public/backend/images/2.png')}}">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="background-color:#008080;">
+                <img alt="" src="{{('public/backend/images/1.png')}}">
                 <span class="username">
                 	<?php
 					$name = Session::get('admin_name');
@@ -166,11 +166,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         @yield('admin_content')
     </section>
  <!-- footer -->
-		  <div class="footer">
+		  <!-- <div class="footer">
 			<div class="wthree-copyright">
 			  <p>Design by <a href="http://w3layouts.com">LYNTT</a></p>
 			</div>
-		  </div>
+		  </div> -->
   <!-- / footer -->
 </section>
 <!--main content end-->
