@@ -59,7 +59,7 @@ class ProductController extends Controller
         // $data['HINH_ANH'] = $get_image;
         $data['LUU_Y'] = $request->luu_y;
         $data['DON_GIA_KM'] = $request->don_gia_km;
-        $data['DON_VI_TINH'] = $request->dvt;
+        $data['DVT'] = $request->dvt;
         $data['SO_LUONG_TON'] = $request->so_luong_ton;
         $data['product_status'] = 0;
         
