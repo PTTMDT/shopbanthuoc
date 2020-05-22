@@ -148,19 +148,21 @@
                                 <li><a href="{{URL::to('/trang-chu')}}" class="active"style="color:#008B8B ">Trang chủ</a></li>
                                 <li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">THUỐC XƯƠNG KHỚP</a></li>
-                                        <li><a href="shop.html">THUỐC DA LIỄU</a></li>
+                                    @foreach($category as $value)
+                                        <li><a href="{{URL::to('/danh-muc-san-pham/'.$value->slug_category_product)}}">{{$value->GOC_THUOC}}</a></li>
+                                    @endforeach
+                                        <!-- <li><a href="shop.html">THUỐC DA LIỄU</a></li>
                                         <li><a href="shop.html">THUỐC HỖ TRỢ TRÍ NHỚ</a></li>
                                         <li><a href="shop.html">THUỐC CẢM CÚM</a></li>
                                         <li><a href="shop.html">THUỐC HẠ SỐT, GIẢM ĐAU</a></li>
-                                        <li><a href="shop.html">THUỐC DỊ ỨNG</a></li>
+                                        <li><a href="shop.html">THUỐC DỊ ỨNG</a></li> -->
                                        
                                     </ul>
                                 </li> 
                                
                                 </li> 
                                 <li><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
-                                 <li><a href="{{URL::to('/login')}}">Lịch sử mua hàng</a></li>
+                                <li><a href="{{URL::to('/login')}}">Lịch sử mua hàng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -261,7 +263,7 @@
                         </div><!--/category-products-->
                     
                         <div class="brands_products"><!--brands_products-->
-                            <h2 style="color:#008B8B ">Thương hiệu sản phẩm</h2>
+                            <h2 style="color:#008B8B ">Nhà cung cấp</h2>
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($brand as $key => $brand)
