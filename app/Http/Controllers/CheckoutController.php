@@ -193,10 +193,8 @@ class CheckoutController extends Controller
     		return Redirect::to('/login-checkout');
     	}
     	
-   
-    	
-
     }
+    
      public function manage_order(){
         
         $this->AuthLogin();
