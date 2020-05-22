@@ -90,8 +90,8 @@
                                
                                 
                                 <?php
-                                   $customer_id = Session::get('customer_id');
-                                   $shipping_id = Session::get('shipping_id');
+                                   $customer_id = Session::get('ID_KH');
+                                   $shipping_id = Session::get('TEN_TIENTE');
                                    if($customer_id!=NULL && $shipping_id==NULL){ 
                                  ?>
                                   <li><a href="{{URL::to('/checkout')}}" style="color:#008B8B "><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
@@ -99,7 +99,7 @@
                                 <?php
                                  }elseif($customer_id!=NULL && $shipping_id!=NULL){
                                  ?>
-                                 <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
+                                 <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán{{$shipping_id}}</a></li>
                                  <?php 
                                 }else{
                                 ?>
@@ -111,7 +111,7 @@
 
                                 <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                                 <?php
-                                   $customer_id = Session::get('customer_id');
+                                   $customer_id = Session::get('ID_KH');
                                    if($customer_id!=NULL){ 
                                  ?>
                                   <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
