@@ -113,3 +113,5 @@ Route::get('/login','historyController@login');
 Route::post('/login_history','historyController@login_history');
 Route::post('/add_customer','historyController@add_customer');
 Route::get('/history','historyController@show_history');
+// lien he
+Route::get('lienhe', 'HomeController@getContact');
