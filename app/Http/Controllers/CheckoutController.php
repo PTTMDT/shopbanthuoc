@@ -81,7 +81,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product)->with('customer',$customer)->with('tranport',$tranport)->with('payment',$payment);
         // print_r($customer);
     }
-     public function save_checkout_customer(Request $request){
+      public function save_checkout_customer(Request $request){
         $data = array();
         $id_customer=Session::get('ID_KH');
         $shipping_id=$request->vanchuyen;
@@ -101,7 +101,13 @@ class CheckoutController extends Controller
     	$data['GHI_CHU'] = $request->shipping_notes;
         // $data['shipping_address'] = $request->shipping_address;
       
-        $total= Cart::total(0,'','');
+        // $total= Cart::total(0,'','');
+
+        $content = Cart::content();
+        foreach($content as $v_content){
+            $total=$v_content->price * $v_content->qty;
+        }
+        
         // $total_convert=chop($total,',');
         $data['TONG_DDH'] = $total;
         if($id_km==NULL){
