@@ -97,6 +97,7 @@ Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer
 //Order
 Route::get('/manage-order','CheckoutController@manage_order');
 Route::get('/view-order/{orderId}','CheckoutController@view_order');
+Route::get('/print-order/{checkout_code}','CheckoutController@print_order');
 // LO
 Route::get('/add-lo-product','LoController@addlo_product');
 Route::get('/editlo-product/{lo_id}','LoController@editlo_product');

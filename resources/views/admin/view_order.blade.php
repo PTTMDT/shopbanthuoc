@@ -169,8 +169,9 @@
      
         </tbody>
       </table>
-
+      <a href="{{url('/print-order/'.$order_by_id->ID_DDH)}}">In đơn hàng</a>
     </div>
+
    
   </div>
 </div>

@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,11 +7,13 @@ use Session;
 use Cart;
 use Carbon\Carbon;
 use App\Http\Requests;
+use PDF;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 
 class CheckoutController extends Controller
 {
+
      public function AuthLogin(){
         $admin_id = Session::get('ID_NV');
         if($admin_id){
@@ -21,6 +21,14 @@ class CheckoutController extends Controller
         }else{
             return Redirect::to('admin')->send();
         }
+    }
+    public function print_order($checkout_code){
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf ->loadHTML($this->print_order_convert($checkout_code));
+        return $pdf->stream();
+    }
+    public function print_order_convert($checkout_code){
+        return $checkout_code;
     }
    public function view_order($orderId){
         $this->AuthLogin();

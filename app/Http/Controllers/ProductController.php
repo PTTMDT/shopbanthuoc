@@ -53,17 +53,19 @@ class ProductController extends Controller
         $data['QUY_CACH_DONG_GOI'] = $request->quy_cach;
         $data['TAC_DUNG'] = $request->tac_dung;
         $data['product_desc'] = $request->product_desc;
-        $data['DON_GIA'] = $request->don_gia;
         $data['CACH_DUNG'] = $request->cach_dung;
-        $get_image = $request->file('HINH_ANH');
-        // $data['HINH_ANH'] = $get_image;
+        $data['DON_GIA'] = $request->don_gia;
+        $data['HINH_ANH'] = $request->hinh_anh;
         $data['LUU_Y'] = $request->luu_y;
         $data['DON_GIA_KM'] = $request->don_gia_km;
-        $data['DON_VI_TINH'] = $request->dvt;
+        $data['DVT'] = $request->dvt;
         $data['SO_LUONG_TON'] = $request->so_luong_ton;
-        $data['product_status'] = 0;
-        
-      
+        $data['product_status'] = $request->status;
+
+        $get_image = $request->file('HINH_ANH');
+        // echo'<pre>';
+        // print_r($data);
+        // echo'<pre>';
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
@@ -71,16 +73,13 @@ class ProductController extends Controller
             $get_image->move('public/uploads/product',$new_image);
             $data['HINH_ANH'] = $new_image;
             DB::table('thuoc')->insert($data);
-            Session::put('message','Thêm thuốc thành công');
-            return Redirect::to('all-product');
-
-            // return $hinhanh;
+            Session::put('message','Thêm sản phẩm thành công');
+            return Redirect::to('add-product');
         }
         $data['HINH_ANH'] = '';
     	DB::table('thuoc')->insert($data);
-    	Session::put('message','Thêm thuốc thành công');
-        return Redirect::to('all-product');
-        // return  $get_image;
+    	Session::put('message','Thêm sản phẩm thành công');
+    	return Redirect::to('all-product');
     }
     public function unactive_product($product_id){
          $this->AuthLogin();
@@ -130,21 +129,21 @@ class ProductController extends Controller
         $data['HINH_ANH'] = $request->hinh_anh;
         
         $get_image = $request->file('HINH_ANH');
-        
+      
         if($get_image){
-                    $get_name_image = $get_image->getClientOriginalName();
-                    $name_image = current(explode('.',$get_name_image));
-                    $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-                    $get_image->move('public/uploads/product',$new_image);
-                    $data['product_image'] = $new_image;
-                    DB::table('thuoc')->where('ID_THUOC',$product_id)->update($data);
-                    Session::put('message','Cập nhật thuốc thành công');
-                    return Redirect::to('all-product');
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('public/uploads/product',$new_image);
+            $data['HINH_ANH'] = $new_image;
+            DB::table('thuoc')->insert($data);
+            Session::put('message','Thêm sản phẩm thành công');
+            return Redirect::to('add-product');
         }
-            
-        DB::table('thuoc')->where('ID_THUOC',$product_id)->update($data);
-        Session::put('message','Cập nhật thuốc thành công');
-        return Redirect::to('all-product');
+        $data['HINH_ANH'] = '';
+    	DB::table('thuoc')->insert($data);
+    	Session::put('message','Thêm sản phẩm thành công');
+    	return Redirect::to('all-product');
     }
     public function delete_product($product_id){
         $this->AuthLogin();
