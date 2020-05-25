@@ -9,7 +9,22 @@
                                 <div class="single-products">
                                         <div class="productinfo text-center">
                                             <img src="{{URL::to('public/uploads/product/'.$product->HINH_ANH)}}" alt="" />
-                                            <h2 style="color: #008B8B ">{{number_format($product->DON_GIA).' '.'VNĐ'}}</h2>
+                                            <!-- <h2 style="color: #008B8B ">{{number_format($product->DON_GIA).' '.'VNĐ'}}</h2> -->
+                                  <?php
+								      
+                                      if($product->DON_GIA_KM==NULL)
+                                      {
+                                  ?>
+                                      <h2 style="color: #008B8B;">{{number_format($product->DON_GIA).'VNĐ'}}</h2>
+                                      
+                                  <?php
+                                  }else{
+                                  ?>
+                                      <h2  style="color: #008B8B;text-decoration:line-through"><del>{{number_format($product->DON_GIA).'VNĐ'}}</del></h2>
+                                      <h2  style="color: red;">{{number_format($product->DON_GIA_KM).'VNĐ'}}</h2>
+                                  <?php
+                                  }
+                                  ?>
                                             <p>{{$product->TEN_THUOC}}</p>
                                             <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_slug)}}" class="btn btn-default add-to-cart" style="background-color: #008B8B;color: white"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
                                         </div>
