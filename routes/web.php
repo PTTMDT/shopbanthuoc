@@ -77,6 +77,17 @@ Route::post('/saveKM-product','KMController@saveKM_product');
 Route::post('/updateKM-product/{KM_id}','KMController@updateKM_product');
 
 Route::post('/add_binhluan','ProductController@add_binhluan');
+//nhan viên
+Route::get('/add-NV-product','NvController@addNV_product');
+Route::get('/editNV-product/{NV_id}','NvController@editNV_product');
+Route::get('/deleteNV-product/{NV_id}','NvController@deleteNV_product');
+Route::get('/all-NV-product','NvController@allNV_product');
+
+
+Route::post('/saveNV-product','NVController@saveNV_product');
+Route::post('/updateNV-product/{NV_id}','NVController@updateNV_product');
+
+Route::post('/add_binhluan','ProductController@add_binhluan');
 //Cart
 Route::post('/update-cart-quantity','CartController@update_cart_quantity');
 Route::post('/save-cart','CartController@save_cart');
