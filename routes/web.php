@@ -109,6 +109,8 @@ Route::get('/activelo-product/{lo_id}','LoController@activelo_product');
 
 Route::post('/savelo-product','LoController@savelo_product');
 Route::post('/updatelo-product/{lo_id}','LoController@updatelo_product');
+
+Route::get('/view-lo/{lo_id}','LoController@view_lo');
 //history order
 Route::get('/login','historyController@login');
 Route::post('/login_history','historyController@login_history');
