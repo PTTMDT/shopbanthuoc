@@ -65,7 +65,8 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-           
+            <th>Tổng đơn đặt hàng:</th>
+            <td>{{$order_by_id->ID_DDH}}</td>
             <th>Tổng đơn đặt hàng:</th>
             <td>{{$order_by_id->TONG_DDH}}</td>
           
@@ -150,23 +151,34 @@
             <th>Tên thuốc</th>
             <th>Số lượng</th>
             <th>Đơn giá</th>
-          
+            <th>Khuyến mãi</th>
             
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-        
+        @foreach($detail_order as $value)
           <tr>
-        
-          <td>{{$order_by_id->TEN_THUOC}}</td>
-          <td>{{$order_by_id->SO_LUONG}}</td>
-          <td>{{$order_by_id->DON_GIA}}</td>
-            
-           
-          
+        <?php
+        $km=$value->ID_KM;
+        if($km==NULL){
+        ?>
+          <td>{{$value->TEN_THUOC}}</td>
+          <td>{{$value->SO_LUONG}}</td>
+          <td>{{$value->DON_GIA}}</td>
+          <td></td>
+        <?php
+        }else{
+        ?>
+          <td>{{$value->TEN_THUOC}}</td>
+          <td>{{$value->SO_LUONG}}</td>
+          <td>{{$value->DON_GIA}}</td>
+          <td>{{$value->GIA_TRI_KM}}</td>  
+        <?php
+        }
+        ?>   
           </tr>
-     
+        @endforeach
         </tbody>
       </table>
       <a href="{{url('/print-order/'.$order_by_id->ID_DDH)}}">In đơn hàng</a>
