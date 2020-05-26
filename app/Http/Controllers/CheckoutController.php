@@ -28,7 +28,78 @@ class CheckoutController extends Controller
         return $pdf->stream();
     }
     public function print_order_convert($checkout_code){
-        return $checkout_code;
+        $order_by_id = DB::table('don_dat_hang')
+        ->join('khach_hang','don_dat_hang.ID_KH','=','khach_hang.ID_KH')
+        ->join('nhan_vien','don_dat_hang.ID_NV','=','nhan_vien.ID_NV')
+        ->join('hinh_thuc_van_chuyen','don_dat_hang.ID_VC','=','hinh_thuc_van_chuyen.ID_VC')
+        ->join('hinh_thuc_thanh_toan','don_dat_hang.ID_HT','=','hinh_thuc_thanh_toan.ID_HT')
+        // ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+        // ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+        // ->join('khuyen_mai','khuyen_mai.ID_KM','=','don_dat_hang.ID_KM')
+        ->where('don_dat_hang.ID_DDH',$checkout_code)
+        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*')->first();
+        $detail_order= DB::table('don_dat_hang')
+        ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+        ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+        ->join('khuyen_mai','khuyen_mai.ID_KM','=','thuoc.ID_KM')
+        ->where('don_dat_hang.ID_DDH',$checkout_code)
+        ->select('don_dat_hang.*','thuoc.*','chi_tiet_don_dat_hang.*','khuyen_mai.*')->get();
+        if(empty($detail_order)==NULL){
+            $detail_order= DB::table('don_dat_hang')
+            ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+            ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+            ->where('don_dat_hang.ID_DDH',$checkout_code)
+            ->select('don_dat_hang.*','thuoc.*','chi_tiet_don_dat_hang.*')->get();
+        }
+        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id)->with('detail_order',$detail_order);
+        return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
+        $output ='';
+        $output.='<style>body{
+            font-family: DejaVu Sans;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+        </style>
+        <h3>SHOP BÁN THUỐC ONLINE LYNTT</h3>
+        <p>Số điện thoại: 0782925679</p>
+        <p>Địa chỉ: 17/140B Trần Văn Ơn Đường Nguyễn Văn Cừ Quận Ninh Kiều, Cần Thơ</p>
+        <h1><center>HÓA ĐƠN THANH TOÁN</h1>
+        <p>Số HĐ:  '.$detail_order->ID_DDH.'</P>
+        <p>Ngày:  '.$detail_order->NGAY_DAT.'</P>
+        <p>Tên khách hàng:  '.$order_by_id->TEN_KH.'</P>
+        <p>Địa chỉ:  '.$order_by_id->DIA_CHI.'</P>
+        <p>Số điện thoại:  '.$order_by_id->SDT.'</P>
+        <p>Hình thức vận chuyển:  '.$order_by_id->TEN_HT.'</P>
+        <table style="width:100%">
+        <thead>
+        <tr>
+        <th>Tên thuốc</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền</th>
+        </tr>
+        <tbody>';
+        $output.='
+        <tr>
+        <td>'.$detail_order->TEN_THUOC.'</td>
+        <td>'.$detail_order->SO_LUONG.'</td>
+        <td>'.$detail_order->DON_GIA.'</td>
+        <td>'.$detail_order->THANH_TIEN.'</td>
+        </tr>';
+        $output.='
+        </tbody>
+
+        </thead>
+        </table>
+        <p>Tổng tiền:  '.$detail_order->TONG_DDH.' </P>
+        <p>Khuyến mãi:  '.$detail_order->GIA_TRI_KM.'</P>
+        <p><b>Phí vận chuyển: </b></P>
+        <p><b>Tổng thanh toán: </b></P>
+        <h3><center>CẢM ƠN QUÝ KHÁCH HÀNG</center></h3>
+        ';
+        return $output;
     }
    public function view_order($orderId){
         $this->AuthLogin();
@@ -37,14 +108,27 @@ class CheckoutController extends Controller
         ->join('nhan_vien','don_dat_hang.ID_NV','=','nhan_vien.ID_NV')
         ->join('hinh_thuc_van_chuyen','don_dat_hang.ID_VC','=','hinh_thuc_van_chuyen.ID_VC')
         ->join('hinh_thuc_thanh_toan','don_dat_hang.ID_HT','=','hinh_thuc_thanh_toan.ID_HT')
+        // ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+        // ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+        // ->join('khuyen_mai','khuyen_mai.ID_KM','=','don_dat_hang.ID_KM')
+        ->where('don_dat_hang.ID_DDH',$orderId)
+        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*')->first();
+        $detail_order= DB::table('don_dat_hang')
         ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
         ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+        ->join('khuyen_mai','khuyen_mai.ID_KM','=','thuoc.ID_KM')
         ->where('don_dat_hang.ID_DDH',$orderId)
-        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*','chi_tiet_don_dat_hang.*','thuoc.*')->first();
-
-        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id);
+        ->select('don_dat_hang.*','thuoc.*','chi_tiet_don_dat_hang.*','khuyen_mai.*')->get();
+        if(empty($detail_order)==NULL){
+            $detail_order= DB::table('don_dat_hang')
+            ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+            ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
+            ->where('don_dat_hang.ID_DDH',$orderId)
+            ->select('don_dat_hang.*','thuoc.*','chi_tiet_don_dat_hang.*')->get();
+        }
+        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id)->with('detail_order',$detail_order);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
-        // print_r($order_by_id);
+        // print_r($detail_order);
         
     }
     public function login_checkout(){
@@ -215,9 +299,9 @@ class CheckoutController extends Controller
         $all_order = DB::table('don_dat_hang')
         ->join('khach_hang','don_dat_hang.ID_KH','=','khach_hang.ID_KH')
         ->join('nhan_vien','don_dat_hang.ID_NV','=','nhan_vien.ID_NV')
-        ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
+        // ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
         ->join('trang_thai','don_dat_hang.ID_TT','=','trang_thai.ID_TT')
-        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','chi_tiet_don_dat_hang.*','trang_thai.*')
+        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','trang_thai.*')
         ->orderby('don_dat_hang.ID_DDH','desc')->get();
         $manager_order  = view('admin.manage_order')->with('all_order',$all_order);
         return view('admin_layout')->with('admin.manage_order', $manager_order);
