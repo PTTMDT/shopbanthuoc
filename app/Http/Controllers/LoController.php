@@ -22,9 +22,12 @@ class LoController extends Controller
         $this->AuthLogin();
         $cate_product = DB::table('loai_lo')->orderby('ID_LOAI_LO','desc')->get(); 
         $brand_product = DB::table('nha_cung_cap')->orderby('ID_NCC','desc')->get(); 
+        $detail_lo = DB:: table('thuoc')
+        ->join('chi_tiet_lo','chi_tiet_lo.ID_THUOC','thuoc.ID_THUOC')
+        ->join('lo','lo.ID_LO','chi_tiet_lo.ID_LO')->get(); 
        
 
-        return view('admin.add_lo_product')->with('cate_product', $cate_product)->with('brand_product',$brand_product);
+        return view('admin.add_lo_product')->with('cate_product', $cate_product)->with('brand_product',$brand_product)->with('detail_lo',$detail_lo);
     	
 
     }
@@ -47,8 +50,12 @@ class LoController extends Controller
         $data['NGAY_HH'] = $request->ngayhh;
         $data['NGAY_NHAP'] = $request->ngaynhap;
         $data['LO_status'] = $request->lo_status;
-
+        $data_lo = array();
+        $data_lo['SO_LUONG'] = $request->so_luong;
+        $data_lo['DON_GIA_LO'] = $request->don_gia_lo;
+        
         DB::table('lo')->insert($data);
+        DB::table('chi_tiet_lo')->insert($data_lo);
     	Session::put('message','Thêm lô thành công');
         return Redirect::to('all-lo-product');
 
@@ -72,9 +79,14 @@ class LoController extends Controller
         $cate_product = DB::table('loai_lo')->orderby('ID_LOAI_LO','desc')->get(); 
         // $brand_product = DB::table('nha_cung_cap')->orderby('ID_NCC','desc')->get();
         $edit_product = DB::table('lo')->where('ID_LO',$lo_id)->get();
-
-        $manager_product  = view('admin.edit_lo_product')->with('edit_product',$edit_product)->with('cate_product',$cate_product);
-
+        $brand_product = DB::table('nha_cung_cap')->orderby('ID_NCC','desc')->get(); 
+        $detail_lo = DB:: table('thuoc')
+        ->join('chi_tiet_lo','chi_tiet_lo.ID_THUOC','thuoc.ID_THUOC')
+        ->join('lo','lo.ID_LO','chi_tiet_lo.ID_LO')->get();
+        $manager_product  = view('admin.edit_lo_product')->with('edit_product',$edit_product)
+        ->with('cate_product',$cate_product)
+        ->with('brand_product',$brand_product)
+        ->with('detail_lo',$detail_lo);
         return view('admin_layout')->with('admin.edit_lo_product', $manager_product);
     }
     public function updatelo_product(Request $request,$lo_id){
@@ -92,9 +104,20 @@ class LoController extends Controller
     }
     public function deletelo_product($lo_id){
         $this->AuthLogin();
-        DB::table('khuyen_mai')->where('ID_LO',$lo_id)->delete();
+        DB::table('lo')->where('ID_LO',$lo_id)->delete();
         Session::put('message','Xóa lô thành công');
         return Redirect::to('all-lo-product');
     }
+    public function view_lo($lo_id){
+        $this->AuthLogin();
+        $order_by_id = DB::table('lo')
+        ->join('chi_tiet_lo','lo.ID_LO','=','chi_tiet_lo.ID_LO')
+        ->join('thuoc','chi_tiet_lo.ID_THUOC','=','thuoc.ID_THUOC')
+        ->join('loai_lo','lo.ID_LOAI_LO','=','loai_lo.ID_LOAI_LO')
+        ->where('lo.ID_LO',$lo_id)
+        ->select('lo.*','chi_tiet_lo.*','thuoc.*','loai_lo.*')->get();
+        $manager_order_by_id  = view('admin.view_lo')->with('order_by_id',$order_by_id);
+        return view('admin_layout')->with('admin.view_lo', $manager_order_by_id);
    
+}
 }
