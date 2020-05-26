@@ -61,7 +61,7 @@
             <td>{{ $order->TEN_NV}}</td>
             <td>{{ $order->NGAY_DAT}}</td>
             <td>{{ $order->TONG_DDH}}</td>
-            <td>{{$order->DON_GIA*$order->SO_LUONG}}</td>
+            <td>{{$order->THANH_TIEN}}</td>
             <td>{{ $order->TEN_TT}}</td>
             
            
