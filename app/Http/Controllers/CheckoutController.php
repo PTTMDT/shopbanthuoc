@@ -108,11 +108,13 @@ class CheckoutController extends Controller
         ->join('nhan_vien','don_dat_hang.ID_NV','=','nhan_vien.ID_NV')
         ->join('hinh_thuc_van_chuyen','don_dat_hang.ID_VC','=','hinh_thuc_van_chuyen.ID_VC')
         ->join('hinh_thuc_thanh_toan','don_dat_hang.ID_HT','=','hinh_thuc_thanh_toan.ID_HT')
+        ->join('trang_thai','don_dat_hang.ID_TT','=','trang_thai.ID_TT')
         // ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
         // ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
         // ->join('khuyen_mai','khuyen_mai.ID_KM','=','don_dat_hang.ID_KM')
         ->where('don_dat_hang.ID_DDH',$orderId)
         ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*')->first();
+       $trangthai=DB::table('trang_thai')->get();
         $detail_order= DB::table('don_dat_hang')
         ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
         ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
