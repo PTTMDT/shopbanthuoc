@@ -19,10 +19,20 @@
                                 <form role="form" action="{{URL::to('/savelo-product')}}" method="post">
                                     {{ csrf_field() }}
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="exampleInputEmail1">Nhà cung cấp</label>
                                     <input type="text" name="id_ncc" class="form-control" id="exampleInputEmail1" placeholder="Lô">
+                                </div> -->
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Danh mục nhà cung cấp</label>
+                                      <select name="id_ncc" class="form-control input-sm m-bot15">
+                                        @foreach($brand_product as $key => $cate)
+                                            <option value="{{$cate->ID_NCC}}">{{$cate->TEN_NCC}}</option>
+                                        @endforeach  
+                                    </select>
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Loại lô</label>
@@ -33,7 +43,14 @@
                                     </select>
                                 </div>
 
-                               
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Tên thuốc</label>
+                                      <select name="id_ncc" class="form-control input-sm m-bot15">
+                                        @foreach($detail_lo as $key => $cate)
+                                            <option value="{{$cate->ID_THUOC}}">{{$cate->TEN_THUOC}}</option>
+                                        @endforeach  
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ngày sản xuất</label>
                                     <input type="date"  name="ngaysx" class="form-control" id="exampleInputEmail1" placeholder="Lô">
@@ -49,6 +66,15 @@
                                     <input type="date" name="ngaynhap" class="form-control" id="exampleInputEmail1" placeholder="Lô">
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Số lượng</label>
+                                    <input type="text" name="so_luong" class="form-control" id="exampleInputEmail1" placeholder="Lô">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Đơn giá lô</label>
+                                    <input type="text" name="don_gia_lo" class="form-control" id="exampleInputEmail1" placeholder="Lô">
+                                </div>
                               
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">LO_status</label>
