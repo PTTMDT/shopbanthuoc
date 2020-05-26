@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                     <label for="exampleInputPassword1">Nhà cung cấp</label>
                                       <select name="id_ncc" class="form-control input-sm m-bot15">
-                                        @foreach($cate_product as $key => $cate)
+                                        @foreach($brand_product as $key => $cate)
                                             @if($cate->ID_NCC==$pro->ID_NCC)
                                             <option selected value="{{$cate->ID_NCC}}">{{$cate->TEN_NCC}}</option>
                                             @else
