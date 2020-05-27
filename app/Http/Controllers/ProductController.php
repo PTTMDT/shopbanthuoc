@@ -126,7 +126,7 @@ class ProductController extends Controller
         return view('admin_layout')->with('admin.edit_product', $manager_product);
        
     }
-    public function update_product(Request $request,$product_id){
+     public function update_product(Request $request,$product_id){
          $this->AuthLogin();
         $data = array();
         $data['TEN_THUOC'] = $request->ten_thuoc;
@@ -136,10 +136,10 @@ class ProductController extends Controller
         $data['HOAT_CHAT_CHINH'] = $request->hoat_chat_chinh;
         $data['ID_GOC'] = $request->product_cate;
         $data['HAM_LUONG'] = $request->ham_luong;
-        $data['KHUYEN_MAI'] = $request->khuyen_mai;
+        $data['ID_KM'] = $request->khuyen_mai;
         $data['DON_GIA_KM'] = $request->don_gia_km;
         $data['product_desc'] = $request->product_desc;
-        $data['DON_VI_TINH'] = $request->dvt;
+        $data['DVT'] = $request->dvt;
         $data['product_status'] = $request->product_status;
         $data['HINH_ANH'] = $request->hinh_anh;
         
@@ -151,12 +151,12 @@ class ProductController extends Controller
             $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/uploads/product',$new_image);
             $data['HINH_ANH'] = $new_image;
-            DB::table('thuoc')->insert($data);
+            DB::table('thuoc')->where('ID_THUOC',$product_id)->update($data);
             Session::put('message','Thêm sản phẩm thành công');
             return Redirect::to('add-product');
         }
         $data['HINH_ANH'] = '';
-    	DB::table('thuoc')->insert($data);
+    	DB::table('thuoc')->where('ID_THUOC',$product_id)->update($data);
     	Session::put('message','Thêm sản phẩm thành công');
     	return Redirect::to('all-product');
     }
