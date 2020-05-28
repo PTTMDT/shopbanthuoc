@@ -126,7 +126,7 @@ class ProductController extends Controller
         return view('admin_layout')->with('admin.edit_product', $manager_product);
        
     }
-    public function update_product(Request $request,$product_id){
+     public function update_product(Request $request,$product_id){
          $this->AuthLogin();
         $data = array();
         $data['TEN_THUOC'] = $request->ten_thuoc;
