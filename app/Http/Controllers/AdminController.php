@@ -28,8 +28,8 @@ class AdminController extends Controller
         $date=Carbon::now('Asia/Ho_Chi_Minh'); // ngày giờ hiện tại
         $ngay= $date->toDateString();  // ngày hiện tại
         $thuoc=DB::table('thuoc')->count(); // đếm số lượng thuốc
-        $thuochethan=DB::table('thuoc') 
-        ->join('chi_tiet_lo','thuoc.ID_THUOC','=','chi_tiet_lo.ID_THUOC')
+        $thuochethan=DB::table('chi_tiet_lo') 
+        ->join('thuoc','chi_tiet_lo.ID_THUOC','=','thuoc.ID_THUOC')
         ->join('lo','chi_tiet_lo.ID_LO','=','lo.ID_LO')
         ->select('thuoc.*','chi_tiet_lo.*','lo.*')->get();
         $ngayhethan= array();
@@ -48,6 +48,7 @@ class AdminController extends Controller
             if($diff<=30){
              array_push($ngayhethan,$value);
             }
+        }
             // print_r( $ngayhethan); 
              $khachhang=DB::table('khach_hang')->count(); // đếm số khách hàng
         $order=DB::table('don_dat_hang')->count(); // đếm số đơn đặt hàng
@@ -84,8 +85,8 @@ class AdminController extends Controller
        
        
          return view('admin.dashboard')->with('thuoc', $thuoc )->with('dondathang', $order)->with('khachhang',$khachhang)->with('doanhthu',$doanhthu)->with('thuochethan',$ngayhethan)->with('thuocbanchay',$thuocbanchay)->with('doanhthuthang',$dothidoanhthu);
-        //    print_r($doanhthuthang);
-        }
+        //    print_r($ngayhethan);
+        
    }
     public function dashboard(Request $request){
     	$admin_email = $request->EMAIL_NV;

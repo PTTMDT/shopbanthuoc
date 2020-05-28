@@ -410,7 +410,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/ -->
 									<tr>
 										<th scope="row">{{$value->ID_THUOC}}</th>
 										<td>{{$value->TEN_THUOC}}</td>
-										<td><span class="label label-success">{{$value->SO_LUONG_TON}}</span></td>
+										<td><span class="label label-success">{{$value->SO_LUONG}}</span></td>
 										<td><h5>{{$value->NGAY_HH}}</h5></td>
 									</tr>
 								@endforeach
