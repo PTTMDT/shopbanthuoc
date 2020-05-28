@@ -128,7 +128,7 @@ class CheckoutController extends Controller
             ->where('don_dat_hang.ID_DDH',$orderId)
             ->select('don_dat_hang.*','thuoc.*','chi_tiet_don_dat_hang.*')->get();
         }
-        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id)->with('detail_order',$detail_order);
+        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id)->with('detail_order',$detail_order)->with('trang_thai',$trangthai);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
         // print_r($detail_order);
         
