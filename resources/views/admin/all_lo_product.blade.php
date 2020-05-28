@@ -42,6 +42,7 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
+            <th>ID lô</th>
             <th>Tên lô</th>
            
             <th>Ngày sản xuất</th>
@@ -58,7 +59,7 @@
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             
                                
-            
+            <td>{{ $pro->ID_LO}}</td>
             <td>{{ $pro->TEN_LOAI_LO}}</td>
             
             <td>{{ $pro->NGAY_SX }}</td>

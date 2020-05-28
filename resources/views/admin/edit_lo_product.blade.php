@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Ngày nhập</label>
+                                    <label for="exampleInputEmail1">Ngày nhập/xuất</label>
                                     <input type="date" name="ngaynhap" class="form-control" id="exampleInputEmail1" value="{{$pro->NGAY_NHAP}}">
                                 </div>
                                  
@@ -72,6 +72,24 @@
                                             
                                     </select>
                                 </div>
+                               @foreach ($detail_lo as $value)
+                               <div class="form-group">
+                                    <label for="exampleInputEmail1">ID Thuốc</label>
+                                    <input type="text" name="idthuoc" class="form-control" id="exampleInputEmail1" value="{{$value->ID_THUOC}}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Thuốc</label>
+                                    <input type="text" name="tenthuoc" class="form-control" id="exampleInputEmail1" value="{{$value->TEN_THUOC}}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Số lượng thuốc nhập/xuất</label>
+                                    <input type="text" name="soluonglo" class="form-control" id="exampleInputEmail1" value="{{$value->SO_LUONG}}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Đơn giá</label>
+                                    <input type="text" name="dongialo" class="form-control" id="exampleInputEmail1" value="{{$value->DON_GIA_LO}}" disabled>
+                                </div>
+                               @endforeach
                                
                                 <button type="submit" name="add_product" class="btn btn-info">Cập nhật lô</button>
                                 </form>

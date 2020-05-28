@@ -51,7 +51,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Ngày nhập</label>
+                                    <label for="exampleInputEmail1">Ngày nhập/xuất</label>
                                     <input type="date" name="ngaynhap" class="form-control" id="exampleInputEmail1" placeholder="Lô">
                                 </div>
 

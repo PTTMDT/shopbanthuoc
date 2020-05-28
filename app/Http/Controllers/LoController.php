@@ -43,7 +43,8 @@ class LoController extends Controller
          $this->AuthLogin();
     	$data = array();
         $data['ID_NCC'] = $request->id_ncc;
-        $data['ID_LOAI_LO'] = $request->id_loai_lo;
+        $idloailo=$request->id_loai_lo;
+        $data['ID_LOAI_LO'] = $idloailo;
         $data['NGAY_SX'] = $request->ngaysx;
         $data['NGAY_HH'] = $request->ngayhh;
         $data['NGAY_NHAP'] = $request->ngaynhap;
@@ -55,6 +56,7 @@ class LoController extends Controller
         $id_lo=DB::table('lo')->insertGetId($data);
         // DB::table('chi_tiet_lo')->insert($data_lo);
         Session::put('ID_LO',$id_lo);
+        Session::put('ID_LOAI_LO',$idloailo);
         Session::put('message','Thêm lô thành công');
       
         return Redirect::to('/add-detail-lo');
@@ -71,11 +73,21 @@ class LoController extends Controller
        $data = array();
        $idlo=Session::get('ID_LO');
        $data['ID_LO'] = $idlo;
-       $data['ID_THUOC'] = $request->id_thuoc;
-       $data['SO_LUONG'] = $request->so_luong;
+       $idthuoc=$request->id_thuoc;
+       $data['ID_THUOC'] =$idthuoc;
+       $soluong=$request->so_luong;
+       $data['SO_LUONG'] = $soluong;
        $data['DON_GIA_LO'] = $request->don_gia_lo;
-       DB::table('chi_tiet_lo')->insert($data);
-       // DB::table('chi_tiet_lo')->insert($data_lo);
+       DB::table('chi_tiet_lo')->insert($data); // thêm vào chi tiết lô
+       $soluongton=DB::table('thuoc')->where('ID_THUOC',$idthuoc)->value('SO_LUONG_TON');
+       $idloailo= Session::get('ID_LOAI_LO');
+       if($idloailo==1){
+       $tongsoluongton= $soluong + $soluongton;
+       }
+       else{
+       $tongsoluongton= $soluongton - $soluong;   
+       }
+       DB::table('thuoc')->where('ID_THUOC',$idthuoc)->update(['SO_LUONG_TON'=>$tongsoluongton]); // cập nhật lại số lượng tồn của thuốc
        Session::put('ID_LO',$idlo);
        Session::put('message','Thêm chi tiết lô thành công');
        return Redirect::to('/add-detail-lo');
@@ -102,14 +114,18 @@ class LoController extends Controller
         // $brand_product = DB::table('nha_cung_cap')->orderby('ID_NCC','desc')->get();
         $edit_product = DB::table('lo')->where('ID_LO',$lo_id)->get();
         $brand_product = DB::table('nha_cung_cap')->orderby('ID_NCC','desc')->get(); 
-        $detail_lo = DB:: table('thuoc')
-        ->join('chi_tiet_lo','chi_tiet_lo.ID_THUOC','thuoc.ID_THUOC')
-        ->join('lo','lo.ID_LO','chi_tiet_lo.ID_LO')->get();
+        $detail_lo = DB::table('lo')
+        ->join('chi_tiet_lo','lo.ID_LO','=','chi_tiet_lo.ID_LO')
+        ->join('thuoc','chi_tiet_lo.ID_THUOC','=','thuoc.ID_THUOC')
+        // ->join('loai_lo','lo.ID_LOAI_LO','=','loai_lo.ID_LOAI_LO')
+        ->where('lo.ID_LO',$lo_id)
+        ->select('lo.*','chi_tiet_lo.*','thuoc.*')->get();
         $manager_product  = view('admin.edit_lo_product')->with('edit_product',$edit_product)
         ->with('cate_product',$cate_product)
         ->with('brand_product',$brand_product)
         ->with('detail_lo',$detail_lo);
         return view('admin_layout')->with('admin.edit_lo_product', $manager_product);
+        // print_r($detail_lo);
     }
     public function updatelo_product(Request $request,$lo_id){
          $this->AuthLogin();
@@ -119,8 +135,9 @@ class LoController extends Controller
         $data['NGAY_SX'] = $request->ngaysx;
         $data['NGAY_HH'] = $request->ngayhh;
         $data['NGAY_NHAP'] = $request->ngaynhap;
-
+     
         DB::table('lo')->where('ID_LO',$lo_id)->update($data);
+       
         Session::put('message','Cập nhật lô thành công');
         return Redirect::to('all-lo-product');
     }
