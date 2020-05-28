@@ -111,6 +111,7 @@ Route::get('/view-order/{orderId}','CheckoutController@view_order');
 Route::get('/print-order/{checkout_code}','CheckoutController@print_order');
 // LO
 Route::get('/add-lo-product','LoController@addlo_product');
+Route::get('/add-detail-lo','LoController@add_detail_lo');
 Route::get('/editlo-product/{lo_id}','LoController@editlo_product');
 Route::get('/deletelo-product/{lo_id}','LoController@deletelo_product');
 Route::get('/all-lo-product','LoController@alllo_product');
@@ -120,6 +121,7 @@ Route::get('/activelo-product/{lo_id}','LoController@activelo_product');
 
 Route::post('/savelo-product','LoController@savelo_product');
 Route::post('/updatelo-product/{lo_id}','LoController@updatelo_product');
+Route::post('/save-detail-lo','LoController@save_detail_lo');
 
 Route::get('/view-lo/{lo_id}','LoController@view_lo');
 //history order

@@ -128,7 +128,7 @@ class CheckoutController extends Controller
             ->where('don_dat_hang.ID_DDH',$orderId)
             ->select('don_dat_hang.*','thuoc.*','chi_tiet_don_dat_hang.*')->get();
         }
-        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id)->with('detail_order',$detail_order);
+        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id)->with('detail_order',$detail_order)->with('trang_thai',$trangthai);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
         // print_r($detail_order);
         
@@ -170,12 +170,24 @@ class CheckoutController extends Controller
       public function save_checkout_customer(Request $request){
         $data = array();
         $id_customer=Session::get('ID_KH');
-        $shipping_id=$request->vanchuyen;
+        $vanchuyen=$request->vanchuyen;
+       
+        if($vanchuyen==NULL){
+            $vanchuyen=1;
+        }
+        $shipping_id=$vanchuyen;  
         $id_km=$request->offer;
         $vc=DB::table('hinh_thuc_van_chuyen')->select('GIA_VC')->where('ID_VC',$shipping_id)->value('GIA_VC');
-        $data['ID_VC'] =$request->vanchuyen;
+     
+       
+        $data['ID_VC'] =$vanchuyen;
         $data['ID_KH']=$id_customer;
-        $data['ID_HT'] = $request->thanhtoan;
+        
+        $thanhtoan=$request->thanhtoan;
+        if($thanhtoan==NULL){
+            $thanhtoan=1;
+        }
+        $data['ID_HT'] = $thanhtoan;
         $data['ID_TT'] = 1;
         $data['ID_TIENTE'] = 1;
         $data['ID_KM']=$request->offer;

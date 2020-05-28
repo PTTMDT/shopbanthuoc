@@ -22,12 +22,10 @@ class LoController extends Controller
         $this->AuthLogin();
         $cate_product = DB::table('loai_lo')->orderby('ID_LOAI_LO','desc')->get(); 
         $brand_product = DB::table('nha_cung_cap')->orderby('ID_NCC','desc')->get(); 
-        $detail_lo = DB:: table('thuoc')
-        ->join('chi_tiet_lo','chi_tiet_lo.ID_THUOC','thuoc.ID_THUOC')
-        ->join('lo','lo.ID_LO','chi_tiet_lo.ID_LO')->get(); 
+     
        
 
-        return view('admin.add_lo_product')->with('cate_product', $cate_product)->with('brand_product',$brand_product)->with('detail_lo',$detail_lo);
+        return view('admin.add_lo_product')->with('cate_product', $cate_product)->with('brand_product',$brand_product);
     	
 
     }
@@ -51,16 +49,40 @@ class LoController extends Controller
         $data['NGAY_NHAP'] = $request->ngaynhap;
         $data['LO_status'] = $request->lo_status;
         $data_lo = array();
-        $data_lo['SO_LUONG'] = $request->so_luong;
-        $data_lo['DON_GIA_LO'] = $request->don_gia_lo;
+        // $data_lo['SO_LUONG'] = $request->so_luong;
+        // $data_lo['DON_GIA_LO'] = $request->don_gia_lo;
         
-        DB::table('lo')->insert($data);
-        DB::table('chi_tiet_lo')->insert($data_lo);
-    	Session::put('message','Thêm lô thành công');
-        return Redirect::to('all-lo-product');
-
-
+        $id_lo=DB::table('lo')->insertGetId($data);
+        // DB::table('chi_tiet_lo')->insert($data_lo);
+        Session::put('ID_LO',$id_lo);
+        Session::put('message','Thêm lô thành công');
+      
+        return Redirect::to('/add-detail-lo');
     }
+    public function add_detail_lo(){
+        $this->AuthLogin();
+        $thuoc = DB:: table('thuoc')->get(); 
+        return view('admin.add_detail_lo')->with('thuoc',$thuoc);
+    	
+   }
+
+    public function save_detail_lo(Request $request){
+        $this->AuthLogin();
+       $data = array();
+       $idlo=Session::get('ID_LO');
+       $data['ID_LO'] = $idlo;
+       $data['ID_THUOC'] = $request->id_thuoc;
+       $data['SO_LUONG'] = $request->so_luong;
+       $data['DON_GIA_LO'] = $request->don_gia_lo;
+       DB::table('chi_tiet_lo')->insert($data);
+       // DB::table('chi_tiet_lo')->insert($data_lo);
+       Session::put('ID_LO',$idlo);
+       Session::put('message','Thêm chi tiết lô thành công');
+       return Redirect::to('/add-detail-lo');
+   }
+ 
+ 
+   
     public function unactivelo_product($lo_id){
          $this->AuthLogin();
         DB::table('lo')->where('ID_LO',$lo_id)->update(['LO_status'=>1]);

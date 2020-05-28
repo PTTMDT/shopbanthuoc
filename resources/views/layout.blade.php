@@ -61,7 +61,7 @@
                             <a href="index.html"><img src="{{('public/frontend/images/yy.png')}}" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
-                            <div class="btn-group">
+                            <!-- <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa"data-toggle="dropdown">
                                     Vietnamese
                                     <span class="caret"></span> 
@@ -70,9 +70,9 @@
                                     <li><a href="#">Vietnamese</a></li>
                                     <li><a href="#">English</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                             
-                            <div class="btn-group">
+                            <!-- <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                     VNĐ
                                     <span class="caret"></span>
@@ -81,7 +81,7 @@
                                     <li><a href="#">VNĐ</a></li>
                                     <li><a href="#">Dollar</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-sm-8">

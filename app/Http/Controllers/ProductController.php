@@ -42,45 +42,60 @@ class ProductController extends Controller
 
     }
     public function save_product(Request $request){
-         $this->AuthLogin();
-    	$data = array();
-    	$data['TEN_THUOC'] = $request->ten_thuoc;
-        $data['product_slug'] = $request->product_slug;
-        $data['ID_GOC'] = $request->goc;
-        $data['ID_KM'] = $request->khuyen_mai;
-        $data['HOAT_CHAT_CHINH'] = $request->hoat_chat_chinh;
-        $data['HAM_LUONG'] = $request->ham_luong;
-        $data['QUY_CACH_DONG_GOI'] = $request->quy_cach;
-        $data['TAC_DUNG'] = $request->tac_dung;
-        $data['product_desc'] = $request->product_desc;
-        $data['CACH_DUNG'] = $request->cach_dung;
-        $data['DON_GIA'] = $request->don_gia;
-        $data['HINH_ANH'] = $request->hinh_anh;
-        $data['LUU_Y'] = $request->luu_y;
-        $data['DON_GIA_KM'] = $request->don_gia_km;
-        $data['DVT'] = $request->dvt;
-        $data['SO_LUONG_TON'] = $request->so_luong_ton;
-        $data['product_status'] = $request->status;
+        $this->AuthLogin();
+       $data = array();
+    
+       $data['TEN_THUOC'] = $request->ten_thuoc;
+       $data['product_slug'] = $request->product_slug;
+       $data['ID_GOC'] = $request->goc;
+       $data['ID_KM'] = $request->khuyen_mai;
+       $data['HOAT_CHAT_CHINH'] = $request->hoat_chat_chinh;
+       $data['HAM_LUONG'] = $request->ham_luong;
+       $data['QUY_CACH_DONG_GOI'] = $request->quy_cach;
+       $data['TAC_DUNG'] = $request->tac_dung;
+       $data['product_desc'] = $request->product_desc;
+       $data['DON_GIA'] = $request->don_gia;
+       $data['CACH_DUNG'] = $request->cach_dung;
+       $get_image = $request->file('HINH_ANH');
+       // $data['HINH_ANH'] = $get_image;
+       $data['LUU_Y'] = $request->luu_y;
+       $ID_KM=$request->khuyen_mai;
+       $km= DB::table('khuyen_mai')->where('ID_KM',$ID_KM)->value('GIA_TRI_KM');
+       $don_gia= $request->don_gia;
+       $don_gia_km=$don_gia*$km;
+       // return  $don_gia_km;
+       if($ID_KM==NULL){
+       $data['DON_GIA_KM'] = NULL;
+       }
+       else {
+           $don_gia_km=$don_gia-$don_gia*$km;
+           $data['DON_GIA_KM']= $don_gia_km;
+       }
+       // $request->don_gia_km;
+       $data['DVT'] = $request->dvt;
+       $data['SO_LUONG_TON'] =0;
+       //  $request->so_luong_ton;
+       $data['product_status'] = 0;
+       
+     
+       if($get_image){
+           $get_name_image = $get_image->getClientOriginalName();
+           $name_image = current(explode('.',$get_name_image));
+           $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+           $get_image->move('public/uploads/product',$new_image);
+           $data['HINH_ANH'] = $new_image;
+           DB::table('thuoc')->insert($data);
+           Session::put('message','Thêm thuốc thành công');
+           return Redirect::to('all-product');
 
-        $get_image = $request->file('HINH_ANH');
-        // echo'<pre>';
-        // print_r($data);
-        // echo'<pre>';
-        if($get_image){
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.',$get_name_image));
-            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-            $get_image->move('public/uploads/product',$new_image);
-            $data['HINH_ANH'] = $new_image;
-            DB::table('thuoc')->insert($data);
-            Session::put('message','Thêm sản phẩm thành công');
-            return Redirect::to('add-product');
-        }
-        $data['HINH_ANH'] = '';
-    	DB::table('thuoc')->insert($data);
-    	Session::put('message','Thêm sản phẩm thành công');
-    	return Redirect::to('all-product');
-    }
+           // return $hinhanh;
+       }
+       $data['HINH_ANH'] = '';
+       DB::table('thuoc')->insert($data);
+       Session::put('message','Thêm thuốc thành công');
+       return Redirect::to('all-product');
+       
+   }
     public function unactive_product($product_id){
          $this->AuthLogin();
         DB::table('thuoc')->where('ID_THUOC',$product_id)->update(['product_status'=>1]);
@@ -121,10 +136,10 @@ class ProductController extends Controller
         $data['HOAT_CHAT_CHINH'] = $request->hoat_chat_chinh;
         $data['ID_GOC'] = $request->product_cate;
         $data['HAM_LUONG'] = $request->ham_luong;
-        $data['KHUYEN_MAI'] = $request->khuyen_mai;
+        $data['ID_KM'] = $request->khuyen_mai;
         $data['DON_GIA_KM'] = $request->don_gia_km;
         $data['product_desc'] = $request->product_desc;
-        $data['DON_VI_TINH'] = $request->dvt;
+        $data['DVT'] = $request->dvt;
         $data['product_status'] = $request->product_status;
         $data['HINH_ANH'] = $request->hinh_anh;
         
@@ -136,12 +151,12 @@ class ProductController extends Controller
             $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/uploads/product',$new_image);
             $data['HINH_ANH'] = $new_image;
-            DB::table('thuoc')->insert($data);
+            DB::table('thuoc')->where('ID_THUOC',$product_id)->update($data);
             Session::put('message','Thêm sản phẩm thành công');
             return Redirect::to('add-product');
         }
         $data['HINH_ANH'] = '';
-    	DB::table('thuoc')->insert($data);
+    	DB::table('thuoc')->where('ID_THUOC',$product_id)->update($data);
     	Session::put('message','Thêm sản phẩm thành công');
     	return Redirect::to('all-product');
     }
