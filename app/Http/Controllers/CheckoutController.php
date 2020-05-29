@@ -133,6 +133,16 @@ class CheckoutController extends Controller
         // print_r($detail_order);
         
     }
+    public function update_order(Request $request,$orderId){
+        $this->AuthLogin();
+       
+        $trangthai = $request->trang_thai;
+       
+        
+        DB::table('don_dat_hang')->where('ID_DDH',$orderId)->update(['ID_TT'=>$trangthai]);
+        Session::put('message','Cập nhật trạng thái thành công');
+        return Redirect::to('/view-order/'.$orderId);
+    }
     public function login_checkout(){
 
     	$cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get();
