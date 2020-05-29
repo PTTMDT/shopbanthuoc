@@ -66,9 +66,9 @@
         <thead>
           <tr>
             <th>Tổng đơn đặt hàng:</th>
-            <td>{{$order_by_id->ID_DDH}}</td>
-            <th>Tổng đơn đặt hàng:</th>
             <td>{{$order_by_id->TONG_DDH}}</td>
+            <th>Tổng tiền:</th>
+            <td>{{$order_by_id->THANH_TIEN}}</td>
           
             
             <th style="width:30px;"></th>
@@ -121,13 +121,65 @@
             <th style="width:30px;"></th>
           </tr>
         </thead>
+        <thead>
+          <tr>
+         
+            <th>Tình trạng đơn hàng:</th>
+            <td>{{$order_by_id->TEN_TT}}</td>
+            
+            <th style="width:30px;"></th>
+            
+          </tr>
+        </thead>
+                                             
       </table>
 
     </div>
    
   </div>
 </div>
-<br><br>
+<br>
+<div class="table-responsive">
+                      <?php
+                            $message = Session::get('message');
+                            if($message){
+                                echo '<span class="text-alert">'.$message.'</span>';
+                                Session::put('message',null);
+                            }
+                            ?>
+    
+      <table class="table table-striped b-t b-light">
+                
+      
+          
+           
+         
+         
+          <form role="form" action="{{URL::to('/update-order/'.$order_by_id->ID_DDH)}}" method="post">
+                                    {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label >Trạng thái</label>
+                                  
+                                    <select name="trang_thai" class="form-control input-sm m-bot15">
+                                        @foreach($trang_thai as $key => $brand)
+                                             
+                                            <option selected value="{{$brand->ID_TT}}">{{$brand->TEN_TT}}</option>
+                                             
+                                        @endforeach
+                                            
+                                    </select>
+                                </div>
+                               
+                               
+                                <button type="submit" name="update_order" class="btn btn-info">Cập nhật</button>
+            </form>
+          
+      </table>
+     
+        
+      
+    </div>
+<br>
 <div class="table-agile-info">
   
   <div class="panel panel-default">
@@ -181,56 +233,7 @@
         @endforeach
         </tbody>
       </table>
-      <div class="table-responsive">
-                      <?php
-                            $message = Session::get('message');
-                            if($message){
-                                echo '<span class="text-alert">'.$message.'</span>';
-                                Session::put('message',null);
-                            }
-                            ?>
-      <!-- <table class="table table-striped b-t b-light">
-        <thead>
-          <tr>
-           
-            <th>Tình trạng đơn hàng:</th>
-          
-          
-            
-            <th style="width:30px;"></th>
-          </tr> -->
-        <!-- </thead> -->
-        <tbody>
-        
-          <tr>
-           
-         
-         
-          <form role="form" action="{{URL::to('/update-order/'.$order_by_id->ID_DDH)}}" method="post">
-                                    {{ csrf_field() }}
-                                <div class="form-group">
-                                    <label >Trạng thái</label>
-                                  
-                                    <select name="trang_thai" class="form-control input-sm m-bot15">
-                                        @foreach($trang_thai as $key => $brand)
-                                             
-                                            <option selected value="{{$brand->ID_TT}}">{{$brand->TEN_TT}}</option>
-                                             
-                                        @endforeach
-                                            
-                                    </select>
-                                </div>
-                               
-                               
-                                <button type="submit" name="update_order" class="btn btn-info">Cập nhật</button>
-                                </form>
-          
-          </tr>
-     
-        </tbody>
-      </table>
-
-    </div>
+      
       <a href="{{url('/print-order/'.$order_by_id->ID_DDH)}}">In đơn hàng</a>
     </div>
 
