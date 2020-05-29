@@ -113,7 +113,7 @@ class CheckoutController extends Controller
         // ->join('thuoc','chi_tiet_don_dat_hang.ID_THUOC','=','thuoc.ID_THUOC')
         // ->join('khuyen_mai','khuyen_mai.ID_KM','=','don_dat_hang.ID_KM')
         ->where('don_dat_hang.ID_DDH',$orderId)
-        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*')->first();
+        ->select('don_dat_hang.*','khach_hang.*','nhan_vien.*','hinh_thuc_van_chuyen.*','hinh_thuc_thanh_toan.*','trang_thai.*')->first();
        $trangthai=DB::table('trang_thai')->get();
         $detail_order= DB::table('don_dat_hang')
         ->join('chi_tiet_don_dat_hang','don_dat_hang.ID_DDH','=','chi_tiet_don_dat_hang.ID_DDH')
