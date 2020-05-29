@@ -197,6 +197,7 @@ class CheckoutController extends Controller
         if($thanhtoan==NULL){
             $thanhtoan=1;
         }
+       
         $data['ID_HT'] = $thanhtoan;
         $data['ID_TT'] = 1;
         $data['ID_TIENTE'] = 1;
@@ -231,10 +232,22 @@ class CheckoutController extends Controller
 
         Session::put('ID_VC',$shipping_id);
         Session::put('ID_DDH',$id_DDH);
-    	
+        if($thanhtoan==2){
+            return Redirect::to('/paypal');
+        }
         return Redirect::to('/payment');
         // print_r($total_order);
         // print_r($tranport);
+    }
+    public function paypal(){
+        $id_DDH=Session::get('ID_DDH');
+        $cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get();
+        $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
+        $order=DB::table('don_dat_hang')->where('ID_DDH',$id_DDH)
+              ->join('hinh_thuc_van_chuyen','don_dat_hang.ID_VC','=','hinh_thuc_van_chuyen.ID_VC')
+              ->orderby('ID_DDH','desc')->get(); 
+        return view('pages.checkout.paypal')->with('category',$cate_product) ->with('brand',$brand_product)->with('order',$order);
+
     }
     public function payment(){
         $id_DDH=Session::get('ID_DDH');
