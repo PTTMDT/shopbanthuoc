@@ -167,13 +167,13 @@ class CheckoutController extends Controller
 
 
     }
-    public function checkout(){
+     public function checkout(){
     	$cate_product = DB::table('goc_thuoc')->where('category_status','0')->orderby('ID_GOC','desc')->get();
         $brand_product = DB::table('nha_cung_cap')->where('brand_status','0')->orderby('ID_NCC','desc')->get(); 
         $id_customer=Session::get('ID_KH');
         $customer=DB::table('khach_hang')->where('ID_KH',$id_customer)->get();
         $tranport=DB::table('hinh_thuc_van_chuyen')->get();
-        $payment=DB::table('hinh_thuc_thanh_toan')->get();
+        $payment=DB::table('hinh_thuc_thanh_toan')->where('ID_HT',2)->get();
         return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product)->with('customer',$customer)->with('tranport',$tranport)->with('payment',$payment);
         // print_r($customer);
     }
