@@ -133,3 +133,9 @@ Route::post('/add_customer','historyController@add_customer');
 Route::get('/history','historyController@show_history');
 // lien he
 Route::get('lienhe', 'HomeController@getContact');
+
+// customer
+Route::get('/customer', 'customerController@all_customer');
+Route::get('/edit-customer/{id_kh}', 'customerController@edit_customer');
+Route::post('/update-customer/{id_kh}','customerController@update_customer');
+Route::get('/delete-customer/{id_kh}','customerController@delete_customer');
