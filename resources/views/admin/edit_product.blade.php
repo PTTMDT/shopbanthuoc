@@ -71,12 +71,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Khuyến mãi</label>
-                                    <input type="text" value="{{$pro->ID_KM}}" name="khuyen_mai" class="form-control" id="exampleInputEmail1" >
+                                    <select name="khuyen_mai" class="form-control">
+    
+                                            <option  value="{{$pro->ID_KM}}"></option>
+                                    @foreach($km as $key => $km)  
+                                            <option value="{{$km->ID_KM}}">{{$km->ID_KM}}</option>
+                                            
+                                    @endforeach
+                                    </select>
                                 </div>
                               
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Đơn giá khuyến mãi</label>
-                                    <input type="text" value="{{$pro->DON_GIA_KM}}" name="don_gia_km" class="form-control" id="exampleInputEmail1" placeholder="Đơn giá khuyến mãi (nếu có)">
+                                    <input type="text" value="{{$pro->DON_GIA_KM}}" name="don_gia_km" class="form-control" id="exampleInputEmail1"  disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Đơn vị tính</label>
@@ -91,7 +98,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Số lượng tồn</label>
-                                    <input type="text" value="{{$pro->SO_LUONG_TON}}" name="so_luong_ton" class="form-control" id="exampleInputEmail1" placeholder="Số lượng tồn">
+                                    <input type="text" value="{{$pro->SO_LUONG_TON}}" name="so_luong_ton" class="form-control" id="exampleInputEmail1" disabled>
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputPassword1">Nhà cung cấp</label>

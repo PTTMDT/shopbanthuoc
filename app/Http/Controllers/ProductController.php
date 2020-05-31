@@ -121,7 +121,7 @@ class ProductController extends Controller
 
         $edit_product = DB::table('thuoc')->where('ID_THUOC',$product_id)->get();
 
-        $manager_product  = view('admin.edit_product')->with('edit_product',$edit_product)->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('DVT',$DVT);
+        $manager_product  = view('admin.edit_product')->with('edit_product',$edit_product)->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('DVT',$DVT)->with('km',$khuyen_mai);
 
         return view('admin_layout')->with('admin.edit_product', $manager_product);
        
