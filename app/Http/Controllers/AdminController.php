@@ -97,6 +97,7 @@ class AdminController extends Controller
     	if($result){
             Session::put('TEN_NV',$result->TEN_NV);
             Session::put('ID_NV',$result->ID_NV);
+            Session::put('ID_LOAI',$result->ID_LOAI);
             return Redirect::to('/dashboard');
         }else{
             Session::put('message','Mật khẩu hoặc tài khoản bị sai.Làm ơn nhập lại');
