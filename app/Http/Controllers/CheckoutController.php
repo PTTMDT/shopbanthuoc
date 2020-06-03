@@ -173,7 +173,7 @@ class CheckoutController extends Controller
         $id_customer=Session::get('ID_KH');
         $customer=DB::table('khach_hang')->where('ID_KH',$id_customer)->get();
         $tranport=DB::table('hinh_thuc_van_chuyen')->get();
-        $payment=DB::table('hinh_thuc_thanh_toan')->where('ID_HT',2)->get();
+        $payment=DB::table('hinh_thuc_thanh_toan')->get();
         return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product)->with('customer',$customer)->with('tranport',$tranport)->with('payment',$payment);
         // print_r($customer);
     }
