@@ -98,7 +98,7 @@ class NvController extends Controller
     public function deleteNV_product($NV_id){
         $this->AuthLogin();
         DB::table('nhan_vien')->where('ID_NV',$NV_id)->delete();
-        Session::put('message','Xóa khuyến mãi thành công');
+        Session::put('message','Xóa nhân viên thành công');
         return Redirect::to('all-NV-product');
     }
    
