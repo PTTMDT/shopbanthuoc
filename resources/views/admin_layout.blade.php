@@ -165,6 +165,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Nhân viên</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-NV-product')}}">Thêm nhân viên</a></li>
+						<li><a href="{{URL::to('/all-NV-product')}}">Liệt kê nhân viên</a></li>
+                      
+                    </ul>
+                </li>
              
             </ul>            </div>
         <!-- sidebar menu end-->
