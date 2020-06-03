@@ -343,4 +343,11 @@ class CheckoutController extends Controller
         $manager_order  = view('admin.manage_order')->with('all_order',$all_order);
         return view('admin_layout')->with('admin.manage_order', $manager_order);
     }
+    public function delete_order($orderId){
+        $this->AuthLogin();
+        
+        DB::table('don_dat_hang')->where('ID_DDH',$orderId)->delete();
+        Session::put('message','Xóa đơn đặt hàng thành công');
+        return Redirect::to('manage-order');
+    }
 }
