@@ -3,7 +3,7 @@
     <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Liệt kê sản phẩm
+      Liệt kê danh sách thuốc
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -42,11 +42,11 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên sản phẩm</th>
+            <th>Tên thuốc</th>
             <th>Slug</th>
             <th>Giá</th>
-            <th>Hình sản phẩm</th>
-            <th>Danh mục</th>
+            <th>Hình ảnh</th>
+            <th>Gốc thuốc</th>
             <th>Thương hiệu</th>
             
             <th>Hiển thị</th>
@@ -82,7 +82,7 @@
             <td>
               <a href="{{URL::to('/edit-product/'.$pro->ID_THUOC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$pro->ID_THUOC)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa thuốc này ko?')" href="{{URL::to('/delete-product/'.$pro->ID_THUOC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -95,7 +95,7 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm">Hiển thị 20-30 trên 50 mặt hàng</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
