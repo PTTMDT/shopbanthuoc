@@ -165,6 +165,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       
                     </ul>
                 </li>
+                 <?php
+                    $idloai = Session::get('ID_LOAI');
+					if($idloai==0||$idloai==3){
+                ?>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -176,6 +180,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       
                     </ul>
                 </li>
+                <?php
+                }
+                ?>
+                
              
             </ul>            </div>
         <!-- sidebar menu end-->
