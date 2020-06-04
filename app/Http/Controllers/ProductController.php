@@ -199,7 +199,7 @@ class ProductController extends Controller
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         // ->join('danh_gia','danh_gia.ID_THUOC','=','thuoc.ID_THUOC')
         // ->join('khach_hang','khach_hang.ID_KH','=','danh_gia.ID_KH')
-        ->where('thuoc.ID_GOC',$category_ID)->whereNotIn('thuoc.product_slug',[$product_slug])->get();
+        ->where('thuoc.ID_GOC',$category_ID)->whereNotIn('thuoc.product_slug',[$product_slug])->whereNotIn('thuoc.SO_LUONG_TON',[0])->get();
         $danhgia=DB::table('danh_gia')      // các thuốc liên quan
         ->join('thuoc','thuoc.ID_THUOC','=','danh_gia.ID_THUOC')
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
