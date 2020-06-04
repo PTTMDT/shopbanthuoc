@@ -21,7 +21,7 @@ class HomeController extends Controller
         // ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         // ->orderby('tbl_product.product_id','desc')->get();
         
-         $all_product = DB::table('thuoc')->where('product_status','0')->orderby('ID_THUOC','desc')->limit(6)->get(); 
+        $all_product = DB::table('thuoc')->where('product_status','0')->whereNotIn('SO_LUONG_TON',[0])->orderby('ID_THUOC','desc')->limit(6)->get(); 
 
     	return view('pages.home')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product',$all_product);
     }
