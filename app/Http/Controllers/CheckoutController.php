@@ -213,8 +213,9 @@ class CheckoutController extends Controller
         // $total= Cart::total(0,'','');
 
         $content = Cart::content();
+        $total=0;
         foreach($content as $v_content){
-            $total=$v_content->price * $v_content->qty;
+            $total= $total +$v_content->price * $v_content->qty;
         }
         
         // $total_convert=chop($total,',');
