@@ -34,26 +34,26 @@ class CategoryProduct extends Controller
     public function save_category_product(Request $request){
         $this->AuthLogin();
     	$data = array();
-    	$data['COC_THUOC'] = $request->category_product_name;
+    	$data['GOC_THUOC'] = $request->category_product_name;
         $data['slug_category_product'] = $request->slug_category_product;
     	//$data['category_desc'] = $request->category_product_desc;
     	$data['category_status'] = $request->category_product_status;
 
     	DB::table('goc_thuoc')->insert($data);
-    	Session::put('message','Thêm danh mục sản phẩm thành công');
+    	Session::put('message','Thêm gốc thuốc thành công');
     	return Redirect::to('add-category-product');
     }
     public function unactive_category_product($category_product_id){
         $this->AuthLogin();
         DB::table('goc_thuoc')->where('ID_GOC',$category_product_id)->update(['category_status'=>1]);
-        Session::put('message','Không kích hoạt danh mục sản phẩm thành công');
+        Session::put('message','Không kích hoạt gốc thuốc thành công');
         return Redirect::to('all-category-product');
 
     }
     public function active_category_product($category_product_id){
         $this->AuthLogin();
         DB::table('goc_thuoc')->where('ID_GOC',$category_product_id)->update(['category_status'=>0]);
-        Session::put('message','Kích hoạt danh mục sản phẩm thành công');
+        Session::put('message','Kích hoạt gốc thuốc thành công');
         return Redirect::to('all-category-product');
     }
     public function edit_category_product($category_product_id){
@@ -71,13 +71,13 @@ class CategoryProduct extends Controller
         $data['slug_category_product'] = $request->slug_category_product;
        // $data['category_desc'] = $request->category_product_desc;
         DB::table('goc_thuoc')->where('ID_GOC',$category_product_id)->update($data);
-        Session::put('message','Cập nhật danh mục sản phẩm thành công');
+        Session::put('message','Cập nhật gốc thuốc thành công');
         return Redirect::to('all-category-product');
     }
     public function delete_category_product($category_product_id){
         $this->AuthLogin();
         DB::table('goc_thuoc')->where('ID_GOC',$category_product_id)->delete();
-        Session::put('message','Xóa danh mục sản phẩm thành công');
+        Session::put('message','Xóa gốc thuốc thành công');
         return Redirect::to('all-category-product');
     }
 
