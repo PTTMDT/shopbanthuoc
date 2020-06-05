@@ -13,7 +13,13 @@
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button>    
+         <form action="{{ url('/Excel/')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="data" value="{{$data_json}}">
+
+                        <button type="submit" class="btn btn-success">Export</button>
+         </form>
       </div>
       <div class="col-sm-4">
       </div>
@@ -22,6 +28,7 @@
           <input type="text" class="input-sm form-control" placeholder="Search">
           <span class="input-group-btn">
             <button class="btn btn-sm btn-default" type="button">Go!</button>
+            
           </span>
         </div>
       </div>
