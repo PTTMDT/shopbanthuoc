@@ -73,6 +73,16 @@ class NvController extends Controller
 
         return view('admin_layout')->with('admin.edit_NV_product', $manager_product);
     }
+     public function edit_admin($NV_id){
+        $this->AuthLogin();
+    $nv_product = DB::table('loai_nhan_vien')->orderby('ID_LOAI','desc')->get(); 
+       
+       $edit_product = DB::table('nhan_vien')->where('ID_NV',$NV_id)->get();
+
+       $manager_product  = view('admin.edit_admin')->with('edit_product',$edit_product);
+
+       return view('admin_layout')->with('admin.edit_admin', $manager_product);
+   }
     public function updateNV_product(Request $request,$NV_id){
          $this->AuthLogin();
         $data = array();
