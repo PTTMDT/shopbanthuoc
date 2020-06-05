@@ -42,7 +42,7 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên danh mục</th>
+            <th>Tên gốc thuốc</th>
             <th>Slug</th>
             <th>Hiển thị</th>
             
@@ -72,7 +72,7 @@
             <td>
               <a href="{{URL::to('/edit-category-product/'.$cate_pro->ID_GOC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/delete-category-product/'.$cate_pro->ID_GOC)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa gốc thuốc này không?')" href="{{URL::to('/delete-category-product/'.$cate_pro->ID_GOC)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
