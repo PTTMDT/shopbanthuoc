@@ -44,7 +44,7 @@ class NvController extends Controller
         $data['TEN_NV'] = $request->ten_nv;
         $data['SDT'] = $request->sdt;
         $data['EMAIL_NV'] = $request->email_nv;
-        // $data['PASSWORD'] = $request->password;
+        $data['PASSWORD'] = md5('123456');
         $data['ID_LOAI'] = $request->id_loai;
         DB::table('nhan_vien')->insert($data);
     	Session::put('message','Thêm nhân viên thành công');
