@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Excel;
 use App\Http\Requests;
 use Carbon\Carbon;
+use App\Exports\thuocexport;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 class ProductController extends Controller
