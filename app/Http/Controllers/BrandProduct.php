@@ -54,14 +54,14 @@ class BrandProduct extends Controller
     public function unactive_brand_product($brand_product_id){
         $this->AuthLogin();
         DB::table('nha_cung_cap')->where('ID_NCC',$brand_product_id)->update(['brand_status'=>1]);
-        Session::put('message','Không kích hoạt thương hiệu sản phẩm thành công');
+        Session::put('message','Không kích hoạt nhà cung cấp thành công');
         return Redirect::to('all-brand-product');
 
     }
     public function active_brand_product($brand_product_id){
         $this->AuthLogin();
         DB::table('nha_cung_cap')->where('ID_NCC',$brand_product_id)->update(['brand_status'=>0]);
-        Session::put('message','Kích hoạt thương hiệu sản phẩm thành công');
+        Session::put('message','Kích hoạt nhà cung cấp thành công');
         return Redirect::to('all-brand-product');
 
     }
@@ -88,7 +88,7 @@ class BrandProduct extends Controller
     public function delete_brand_product($brand_product_id){
         $this->AuthLogin();
         DB::table('nha_cung_cap')->where('ID_NCC',$brand_product_id)->delete();
-        Session::put('message','Xóa thương hiệu sản phẩm thành công');
+        Session::put('message','Xóa nhà cung cấp thành công');
         return Redirect::to('all-brand-product');
     }
 
