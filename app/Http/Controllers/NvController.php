@@ -83,6 +83,28 @@ class NvController extends Controller
 
        return view('admin_layout')->with('admin.edit_admin', $manager_product);
    }
+    public function update_admin(Request $request,$NV_id){
+    $this->AuthLogin();
+   $data = array();
+   // $data['GIA_TRI_KM'] = $request->gia_tri_km;
+   // $data['NGAYBD'] = $request->ngaybd;
+   // $data['NGAYKT'] = $request->ngaykt;
+   // $data['ID_LOAI_KM'] = $request->id_loai_km;
+   // DB::table('khuyen_mai')->where('ID_KM',$KM_id)->update($data);
+   // Session::put('message','Cập nhật khuyến mãi thành công');
+   // return Redirect::to('all-KM-product');
+   $data['TEN_NV'] = $request->ten_nv;
+   $data['SDT'] = $request->sdt;
+   $data['EMAIL_NV'] = $request->email_nv;
+   $data['PASSWORD'] = $request->password;
+//    $data['ID_LOAI'] = $request->id_loai;
+   // DB::table('nhan_vien')->insert($data);
+   DB::table('nhan_vien')->where('ID_NV',$NV_id)->update($data);
+   Session::put('message','Cập nhật nhân viên thành công');
+   return Redirect::to('ttinNV-product');
+   // Session::put('message','Thêm nhân viên thành công');
+   // return Redirect::to('all-KM-product');
+}
     public function updateNV_product(Request $request,$NV_id){
          $this->AuthLogin();
         $data = array();
