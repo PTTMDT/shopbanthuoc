@@ -198,7 +198,7 @@
                                     <h1><span style="color: #008B8B ">LYNTT</span>-Health</h1>
                                     <h2>Nhà Thuốc Trực Tuyến Thân Thiện Cho Mọi Gia Đình</h2>
                                     <p>Tự tạo đơn thuốc, Free ship cho hóa đơn từ 100.000đ trở lên</p>
-                                    <button type="button" class="btn btn-default get"style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button>
+                                    <!-- <button type="button" class="btn btn-default get"style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button> -->
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{('public/frontend/images/c.jpg')}}" class="girl img-responsive" alt="" />
@@ -210,7 +210,7 @@
                                     <h1><span style="color: #008B8B ">LYNTT</span>-Health</h1>
                                     <h2>Mở Rộng Phạm Vi Giao Hàng</h2>
                                     <p>Những Sản Phẩm Cần Thiết Trong MÙa Dịch Covid-19 Đáp Ứng Nhu Cầu Khắp Mọi Nơi </p>
-                                    <button type="button" class="btn btn-default get" style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button>
+                                    <!-- <button type="button" class="btn btn-default get" style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button> -->
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{('public/frontend/images/d.jpg')}}" class="girl img-responsive" alt="" />
@@ -223,7 +223,7 @@
                                     <h1><span style="color: #008B8B ">LYNTT</span>-Health</h1>
                                     <h2>Nhanh & Tiện Lợi</h2>
                                     <p>Tiết Kiệm Ngay 10% Trên Tổng Giá Trị Đơn Hàng </p>
-                                    <button type="button" class="btn btn-default get" style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button>
+                                    <!-- <button type="button" class="btn btn-default get" style="background-color: #008B8B ">ĐẶT THUỐC NGAY</button> -->
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{('public/frontend/images/E.jpg')}}" class="girl img-responsive" alt="" />

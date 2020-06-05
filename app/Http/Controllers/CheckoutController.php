@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;ca
+use DB;
 use Session;
 use Cart;
 use Carbon\Carbon;
@@ -213,10 +213,10 @@ class CheckoutController extends Controller
         // $total= Cart::total(0,'','');
 
         $content = Cart::content();
-        $total=0;
-        foreach($content as $v_content){
-            $total= $total +$v_content->price * $v_content->qty;
-        }
+            $total=0;
+            foreach($content as $v_content){
+                $total= $total +$v_content->price * $v_content->qty;
+            }
         
         // $total_convert=chop($total,',');
         $data['TONG_DDH'] = $total;

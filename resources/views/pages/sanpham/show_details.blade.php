@@ -139,14 +139,14 @@
                                     <form action="{{URL::to('/add_binhluan')}}" method="POST"> 
 									    {{csrf_field()}} 
 										<span>
-											<input type="text" name="TEN_KH" placeholder="Your Name"/>
-											<input type="text" name="EMAIL_KH" placeholder="Email Address"/>
+											<input type="text" name="EMAIL_KH" placeholder="Địa chỉ mail"/>
+											<input type="password" name="password" placeholder="Mật khẩu"/>
 										     <!-- <input type="text" name="ND_DANH_GIA" placeholder=""/>  --> 
 										</span> 
 
 										<textarea name="nd_danhgia" ></textarea>
 										<b></b> <img src="images/product-details/rating.png" alt="" />
-										<button type="submit" class="btn btn-default pull-right" >Submit</button>
+										<button type="submit" class="btn btn-default pull-right" >Đánh giá</button>
 									</form> 	 
 								</div> 
 					
@@ -175,8 +175,11 @@
 							@foreach($relate as $key => $lienquan)
 									<div class="col-sm-4">
 										<div class="product-image-wrapper">
+										<a href="{{URL::to('/chi-tiet-san-pham/'.$lienquan->product_slug)}}">
 											 <div class="single-products">
 		                                        <div class="productinfo text-center">
+												                            
+
 		                                            <img src="{{URL::to('public/uploads/product/'.$lienquan->HINH_ANH)}}" alt="" />
 													
 												    <h2>{{number_format($lienquan->DON_GIA).' '.'VNĐ'}}</h2>
@@ -185,6 +188,7 @@
 		                                        </div>
 		                                      
                                 			</div>
+										</a>
 										</div>
 									</div>
 							@endforeach		

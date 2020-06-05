@@ -220,10 +220,10 @@ class ProductController extends Controller
     
        public function add_binhluan(Request $request){
         $data = array();
-        $tenkh = $request->TEN_KH;
+        $mk = md5($request->password);
         $email = $request->EMAIL_KH;
         $khachhang=DB::table('khach_hang')->where([
-            ['TEN_KH', '=', $tenkh],
+            ['PASSWORD', '=', $mk],
             ['EMAIL_KH', '=', $email]
         ])->value('ID_KH');
         $data['ID_THUOC']=Session::get('ID_THUOC');
