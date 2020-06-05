@@ -106,6 +106,92 @@ class AdminController extends Controller
         // print_r($result);
        
     }
+    public function mkdashboard(){
+        $this->AuthLogin();
+    
+
+        return view('admin.xthucmk');
+
+        
+       
+        //  $data['PASSWORD'] = $request->password;
+         
+        // $passwordold = $request->passwordold;
+        // $passwordnew = $request->passwordnew;
+        //$password = $request->password;
+        // $result = DB::table('nhan_vien')->where('ID_NV',$admin_id)->where('passwordold',$passwordold)->first();
+    	// if($result){
+        //     Session::put('TEN_NV',$result->TEN_NV);
+        //     Session::put('ID_NV',$result->ID_NV);
+        //     return Redirect::to('/updateNV-product');
+        // }else{
+        //     Session::put('message','Mật khẩu bị sai.Làm ơn nhập lại');
+        //     return Redirect::to('/mkdashboard');
+        // }
+        //  print_r($result);
+       
+    }
+    public function updateMK_product(Request $request){
+        $this->AuthLogin();
+        $admin_id = Session::get('ID_NV');
+        return view('admin.newpass');
+    //    $data = array();
+
+    //     $data['PASSWORD'] = $request->password;
+    //    DB::table('nhan_vien')->where('ID_NV',$admin_id)->update($data);
+    //    Session::put('message','Cập nhật mật khẩu nhân viên thành công');
+    //    return Redirect::to('/admin');
+       
+   }
+   public function check_updateMK(Request $request){
+    $this->AuthLogin();
+    $admin_id = Session::get('ID_NV');
+
+    $data = array();
+    $mk=$request->PASSWORD;
+    $mk1=$request->password1;
+
+    if($mk===$mk1){
+    $data['PASSWORD'] =md5($mk);
+    DB::table('nhan_vien')->where('ID_NV',$admin_id)->update($data);
+    Session::put('message','Cập nhật mật khẩu nhân viên thành công');
+    return Redirect::to('/admin');
+    }
+    else {
+    Session::put('message','Mật khẩu nhân viên không khớp');
+    return Redirect::to('/updateMK-product');
+    }
+    // print_r($mk);
+    // print_r($mk1);
+
+
+   
+}  
+public function mkdashboard_xt(Request $request){
+   
+    $admin_password = md5($request->password);
+    // print_r($admin_email);
+    // print_r($admin_password);
+    $result = DB::table('nhan_vien')->where('PASSWORD',$admin_password)->first();
+    if($result){
+       
+        return Redirect::to('/updateMK-product');
+    }else{
+        Session::put('message','Mật khẩu hoặc tài khoản bị sai.Làm ơn nhập lại');
+        return Redirect::to('/mkdashboard');
+    }
+    // print_r($result);
+   
+}
+    public function ttinNV_product(){
+        $admin_id = Session::get('ID_NV');
+        $NV_by_id = DB::table('nhan_vien')
+        ->join('loai_nhan_vien','loai_nhan_vien.ID_LOAI','=','nhan_vien.ID_LOAI')
+        ->select('nhan_vien.*','loai_nhan_vien.*')
+        ->where('nhan_vien.ID_NV',$admin_id)->first();
+        return view ('admin.ttinNv')->with ('NV_by_id',$NV_by_id) ;
+        // print_r($NV_by_id);
+    }
     public function logout(){
         $this->AuthLogin();
         Session::put('TEN_NV',null);
