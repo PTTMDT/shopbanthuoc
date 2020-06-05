@@ -19,6 +19,14 @@ class ProductController extends Controller
             return Redirect::to('nhan_vien')->send();
         }
     }
+    public function Export(Request $request)
+    {
+        $thuoc = $request->get('data');
+        $thuoc = json_decode($thuoc, true);
+        // dd($survey);
+
+        return Excel::download(new thuocexport($thuoc), 'thuoc.xlsx');
+    }
     public function add_product(){
         $this->AuthLogin();
         $cate_product = DB::table('goc_thuoc')->orderby('ID_GOC','desc')->get();
@@ -37,7 +45,8 @@ class ProductController extends Controller
         ->join('goc_thuoc','goc_thuoc.ID_GOC','=','thuoc.ID_GOC')
         #->join('nha_cung_cap','nha_cung_cap.ID_NCC','=','thuoc.ID_NCC')
         ->orderby('thuoc.ID_THUOC','desc')->get();
-    	$manager_product  = view('admin.all_product')->with('all_product',$all_product);
+        $data_json = json_encode($all_product);
+        $manager_product  = view('admin.all_product', compact('all_product', 'data_json'));
     	return view('admin_layout')->with('admin.all_product', $manager_product);
 
     }
