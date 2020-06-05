@@ -56,6 +56,7 @@ Route::get('/add-product','ProductController@add_product');
 Route::get('/edit-product/{product_id}','ProductController@edit_product');
 Route::get('/delete-product/{product_id}','ProductController@delete_product');
 Route::get('/all-product','ProductController@all_product');
+Route::post('/Excel','ProductController@ExPort');
 
 Route::get('/unactive-product/{product_id}','ProductController@unactive_product');
 Route::get('/active-product/{product_id}','ProductController@active_product');
