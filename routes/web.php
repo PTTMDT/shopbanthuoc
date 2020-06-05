@@ -25,6 +25,12 @@ Route::get('/admin','AdminController@index');
 Route::get('/dashboard','AdminController@show_dashboard');
 Route::get('/logout','AdminController@logout');
 Route::post('/admin-dashboard','AdminController@dashboard');
+Route::get('/ttinNV-product','AdminController@ttinNV_product');
+Route::get('/mkdashboard','AdminController@mkdashboard');
+Route::post('/mkdashboard-xt','AdminController@mkdashboard_xt');
+
+Route::get('/updateMK-product','AdminController@updateMK_product');
+Route::post('/check-updateMK','AdminController@check_updateMK');
 
 //Category Product
 Route::get('/add-category-product','CategoryProduct@add_category_product');
@@ -83,7 +89,8 @@ Route::get('/add-NV-product','NvController@addNV_product');
 Route::get('/editNV-product/{NV_id}','NvController@editNV_product');
 Route::get('/deleteNV-product/{NV_id}','NvController@deleteNV_product');
 Route::get('/all-NV-product','NvController@allNV_product');
-
+Route::get('/edit-admin/{NV_id}','NvController@edit_admin');
+Route::post('/update-admin/{NV_id}','NvController@update_admin');
 
 Route::post('/saveNV-product','NVController@saveNV_product');
 Route::post('/updateNV-product/{NV_id}','NVController@updateNV_product');
