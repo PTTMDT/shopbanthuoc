@@ -23,10 +23,11 @@ class customerController extends Controller
     public function all_customer(){
         $this->AuthLogin();
         $all_customer = DB::table('khach_hang')
-        ->join('loai_kh','loai_KH.ID_LKH','=','khach_hang.ID_LKH')
+        ->join('loai_kh','loai_kh.ID_LKH','=','khach_hang.ID_LKH')
         ->orderby('ID_KH','desc')->get();
     	$manager_customer  = view('admin.all_customer')->with('all_customer',$all_customer);
-    	return view('admin_layout')->with('admin.all_product', $manager_customer);
+        return view('admin_layout')->with('admin.all_customer', $manager_customer);
+        // print_r($all_customer);
 
     }
  
