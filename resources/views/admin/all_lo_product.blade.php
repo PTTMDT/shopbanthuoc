@@ -85,7 +85,7 @@
               <a href="{{URL::to('/editlo-product/'.$pro->ID_LO)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
                 <a href="{{URL::to('/view-lo/'.$pro->ID_LO)}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fas fa-eye"></i></a>
+                <i class="fa fa-eye text-success text-active"></i></a>
               <a onclick="return confirm('Bạn có chắc là muốn xóa lô này ko?')" href="{{URL::to('/deletelo-product/'.$pro->ID_LO)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
