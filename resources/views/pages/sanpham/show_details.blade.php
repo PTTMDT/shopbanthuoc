@@ -67,7 +67,13 @@
 							</div><!--/product-information-->
 						</div>
 </div><!--/product-details-->
-
+                               	<?php
+									$message = Session::get('message');
+									if($message){
+		                            echo '<span class="text-alert" style="color:red">'.$message.'</span>';
+	                            	Session::put('message',null);
+	                               }
+                                 	?>
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12"style="backgrund-color:#FFB367" >
 							<ul class="nav nav-tabs" >
@@ -136,6 +142,7 @@
                                     
 							@endforeach	     
 							        <hr/>
+								
                                     <form action="{{URL::to('/add_binhluan')}}" method="POST"> 
 									    {{csrf_field()}} 
 										<span>

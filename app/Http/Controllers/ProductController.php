@@ -237,18 +237,27 @@ class ProductController extends Controller
             ['PASSWORD', '=', $mk],
             ['EMAIL_KH', '=', $email]
         ])->value('ID_KH');
-        $data['ID_THUOC']=Session::get('ID_THUOC');
-        $data['ND_DANH_GIA'] = $request->nd_danhgia;
-        $data['ID_KH']=$khachhang;
-    //    $date_time=Carbon::now('Asia/Ho_Chi_Minh'); 
-        $data['NGAY']=Carbon::now('Asia/Ho_Chi_Minh');  
-        // $data['GIO']='09:00:00';
-        
-        // $data['ID_LKH'] = 1;
-    	 DB::table('danh_gia')->insert($data);
-
-        $product_slug=Session::get('product_slug');
-        return Redirect::to('chi-tiet-san-pham/'.$product_slug);
+        if($khachhang!=NULL){
+            Session::put('message','Cập nhật mật khẩu nhân viên thành công');
+            $data['ID_THUOC']=Session::get('ID_THUOC');
+            $data['ND_DANH_GIA'] = $request->nd_danhgia;
+            $data['ID_KH']=$khachhang;
+        //    $date_time=Carbon::now('Asia/Ho_Chi_Minh'); 
+            $data['NGAY']=Carbon::now('Asia/Ho_Chi_Minh');  
+            // $data['GIO']='09:00:00';
+            
+            // $data['ID_LKH'] = 1;
+             DB::table('danh_gia')->insert($data);
+             Session::put('message','');
+            $product_slug=Session::get('product_slug');
+            return Redirect::to('chi-tiet-san-pham/'.$product_slug);
+        }
+        else {
+            Session::put('message','Email hoặc mật khẩu không đúng. Vui lòng nhập lại để thêm đánh giá.');
+            $product_slug=Session::get('product_slug');
+            return Redirect::to('chi-tiet-san-pham/'.$product_slug);
+        }
+       
 
     }
         
